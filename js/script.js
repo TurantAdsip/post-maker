@@ -462,39 +462,7 @@ function updatePoster() {
             </div>
 
 
-            <div class="answer">
-
-                ✅ Correct Answer:
-
-                ${escapeHTML(
-            value("quizAnswer")
-        )}
-
-            </div>
-
-
-            <div class="gk-box">
-
-
-                <strong>
-
-                    💡 Explanation
-
-                </strong>
-
-
-                <p>
-
-                    ${escapeHTML(
-            value("quizExplanation")
-        )}
-
-                </p>
-
-
-            </div>
-
-        `;
+                   `;
 
     }
 
