@@ -1,0 +1,793 @@
+/* =====================================================
+           GLOBAL
+        ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #111827;
+}
+
+
+/* =====================================================
+           HEADER
+        ===================================================== */
+
+.header {
+    background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+    color: white;
+    padding: 22px 15px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.header p {
+    margin: 7px 0 0;
+    opacity: 0.9;
+}
+
+
+/* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+
+/* =====================================================
+           TYPE SELECTOR
+        ===================================================== */
+
+.type-selector {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.type-card {
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 20px 10px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: 0.2s;
+}
+
+.type-card:hover {
+    transform: translateY(-3px);
+}
+
+.type-card.active {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.type-card .icon {
+    font-size: 35px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.type-card strong {
+    font-size: 17px;
+}
+
+
+/* =====================================================
+           EDITOR
+        ===================================================== */
+
+.editor {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+
+/* =====================================================
+           LEFT PANEL
+        ===================================================== */
+
+.panel {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.panel h2 {
+    margin-top: 0;
+    font-size: 20px;
+}
+
+
+/* =====================================================
+           FORM
+        ===================================================== */
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #2563eb;
+}
+
+
+/* =====================================================
+           LOCKED FIELD
+        ===================================================== */
+
+.locked-field {
+    background: #f1f5f9;
+    color: #1d4ed8;
+    font-weight: bold;
+    cursor: not-allowed;
+    border: 1px solid #94a3b8;
+}
+
+
+/* =====================================================
+           BUTTONS
+        ===================================================== */
+
+button {
+    border: 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.download {
+    width: 100%;
+    margin-top: 18px;
+    background: #16a34a;
+    color: white;
+}
+
+.download:hover {
+    background: #15803d;
+}
+
+.reset {
+    width: 100%;
+    margin-top: 8px;
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.reset:hover {
+    background: #d1d5db;
+}
+
+
+/* =====================================================
+           SIZE INFO
+        ===================================================== */
+
+.size-info {
+    background: #eff6ff;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #1e40af;
+    margin-top: 8px;
+}
+
+
+/* =====================================================
+           LIVE PREVIEW
+        ===================================================== */
+
+.preview-wrapper {
+    position: sticky;
+    top: 20px;
+}
+
+.preview-title {
+    background: white;
+    padding: 13px 15px;
+    border-radius: 12px 12px 0 0;
+    font-weight: bold;
+    color: #1e40af;
+    border-bottom: 1px solid #dbeafe;
+}
+
+.preview-area {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    padding: 25px;
+    background: #dbeafe;
+    border-radius: 0 0 15px 15px;
+    min-height: 600px;
+}
+
+
+/* =====================================================
+           POSTER
+        ===================================================== */
+
+#poster {
+    width: 540px;
+    height: 675px;
+
+    background: #ffffff;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.20);
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+           WATERMARK
+        ===================================================== */
+
+.watermark {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.watermark img {
+    width: 300px;
+
+    max-width: 70%;
+
+    height: auto;
+
+    opacity: 0.08;
+
+    object-fit: contain;
+
+    transform: none !important;
+
+    rotate: none !important;
+
+    display: block;
+}
+
+
+/* =====================================================
+           POSTER CONTENT
+           IMPORTANT FOR FOOTER
+        ===================================================== */
+
+.poster-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =====================================================
+           POSTER HEADER
+        ===================================================== */
+
+.poster-header {
+    position: relative;
+
+    z-index: 5;
+
+    flex-shrink: 0;
+
+    background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+
+    color: white;
+
+    padding: 22px 25px;
+
+    text-align: center;
+}
+
+.brand {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.poster-date {
+    font-size: 13px;
+    margin-top: 5px;
+    opacity: 0.9;
+}
+
+
+/* =====================================================
+           POSTER BODY
+        ===================================================== */
+
+.poster-body {
+    position: relative;
+
+    z-index: 5;
+
+    flex: 1;
+
+    min-height: 0;
+
+    padding: 25px;
+
+    overflow: hidden;
+}
+
+
+/* =====================================================
+           BADGE
+        ===================================================== */
+
+.badge {
+    display: inline-block;
+
+    background: #dbeafe;
+
+    color: #1d4ed8;
+
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+           TITLE
+        ===================================================== */
+
+.poster-title {
+    font-size: 29px;
+
+    line-height: 1.2;
+
+    margin: 5px 0 15px;
+
+    color: #111827;
+}
+
+
+/* =====================================================
+           TEXT
+        ===================================================== */
+
+.poster-text {
+    font-size: 16px;
+
+    line-height: 1.6;
+
+    color: #374151;
+
+    white-space: pre-line;
+}
+
+
+/* =====================================================
+           GK BOX
+        ===================================================== */
+
+.gk-box {
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 15px;
+
+    background: rgba(248, 250, 252, 0.88);
+
+    border-left: 5px solid #2563eb;
+
+    padding: 14px;
+
+    border-radius: 8px;
+}
+
+.gk-box strong {
+    color: #1d4ed8;
+}
+
+.gk-list {
+    margin: 8px 0 0;
+
+    padding-left: 20px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+           QUIZ QUESTION
+        ===================================================== */
+
+.quiz-question {
+    position: relative;
+
+    z-index: 5;
+
+    background: rgba(239, 246, 255, 0.88);
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+           OPTIONS
+        ===================================================== */
+
+.options {
+    margin-top: 12px;
+}
+
+.option {
+    position: relative;
+
+    z-index: 5;
+
+    padding: 10px 12px;
+
+    margin: 7px 0;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.88);
+}
+
+
+/* =====================================================
+           ANSWER
+        ===================================================== */
+
+.answer {
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    background: rgba(220, 252, 231, 0.92);
+
+    color: #166534;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+           SOURCE
+        ===================================================== */
+
+.source {
+    margin-top: 15px;
+
+    font-size: 12px;
+
+    color: #64748b;
+}
+
+
+/* =====================================================
+           HOLIDAY
+        ===================================================== */
+
+.holiday-box {
+    margin-top: 18px;
+
+    padding: 18px;
+
+    background: rgba(255, 247, 237, 0.92);
+
+    border-left: 5px solid #f97316;
+
+    border-radius: 10px;
+}
+
+.holiday-box strong {
+    color: #c2410c;
+}
+
+.holiday-date {
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin: 10px 0;
+
+    color: #111827;
+}
+
+
+/* =====================================================
+           POSTER FOOTER
+           THIS STAYS AT BOTTOM
+        ===================================================== */
+
+.poster-footer {
+    position: relative;
+
+    z-index: 5;
+
+    flex-shrink: 0;
+
+    width: 100%;
+
+    background: #111827;
+
+    color: white;
+
+    padding: 15px 20px;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+.poster-footer strong {
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   RESPONSIVE - PHONE / TABLET / LAPTOP
+===================================================== */
+
+/* Large Laptop / Desktop */
+@media (min-width: 1200px) {
+
+    .container {
+        max-width: 1200px;
+    }
+
+}
+
+
+/* Laptop / Small Desktop */
+@media (max-width: 1100px) {
+
+    .editor {
+        grid-template-columns: 340px 1fr;
+        gap: 20px;
+    }
+
+    .type-selector {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+    }
+
+}
+
+
+/* Tablet */
+@media (max-width: 950px) {
+
+    .type-selector {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .editor {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-wrapper {
+        position: static;
+    }
+
+    .preview-area {
+        justify-content: center;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+}
+
+
+/* Large / Medium Phone */
+@media (max-width: 700px) {
+
+    .container {
+        padding: 12px;
+    }
+
+    .type-selector {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .type-card {
+        padding: 15px 5px;
+    }
+
+    .type-card .icon {
+        font-size: 28px;
+    }
+
+    .type-card strong {
+        font-size: 15px;
+    }
+
+    .panel {
+        padding: 15px;
+    }
+
+    .preview-area {
+        padding: 15px;
+        justify-content: flex-start;
+    }
+
+}
+
+
+/* Small Phone */
+@media (max-width: 480px) {
+
+    .header {
+        padding: 18px 10px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .header p {
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 8px;
+    }
+
+    .type-selector {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .type-card {
+        padding: 12px 4px;
+        border-radius: 12px;
+    }
+
+    .type-card .icon {
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+
+    .type-card strong {
+        font-size: 13px;
+    }
+
+    .panel {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .panel h2 {
+        font-size: 18px;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .preview-area {
+        padding: 10px;
+    }
+
+}
+
+
+/* Very Small Phone */
+@media (max-width: 360px) {
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .header p {
+        font-size: 12px;
+    }
+
+    .type-card {
+        padding: 10px 3px;
+    }
+
+    .type-card .icon {
+        font-size: 22px;
+    }
+
+    .type-card strong {
+        font-size: 12px;
+    }
+
+}

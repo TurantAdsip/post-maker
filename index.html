@@ -1,0 +1,634 @@
+\
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KrishnaPrep Post Maker</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+     PAGE HEADER
+===================================================== -->
+
+    <header class="header">
+
+        <h1>
+            KrishnaPrep Post Maker
+        </h1>
+
+        <p>
+            Create Posts • Static GK • Current Affairs • Quiz • Holidays
+        </p>
+
+    </header>
+
+
+
+    <!-- =====================================================
+     MAIN
+===================================================== -->
+
+    <div class="container">
+
+
+        <!-- =================================================
+         TYPE SELECTOR
+    ================================================== -->
+
+        <div class="type-selector">
+
+
+            <div class="type-card active" data-type="post">
+
+                <span class="icon">
+                    📰
+                </span>
+
+                <strong>
+                    Post
+                </strong>
+
+            </div>
+
+
+            <div class="type-card" data-type="gk">
+
+                <span class="icon">
+                    📚
+                </span>
+
+                <strong>
+                    Static GK
+                </strong>
+
+            </div>
+
+
+            <div class="type-card" data-type="current">
+
+                <span class="icon">
+                    🗞️
+                </span>
+
+                <strong>
+                    Current Affairs
+                </strong>
+
+            </div>
+
+
+            <div class="type-card" data-type="quiz">
+
+                <span class="icon">
+                    ❓
+                </span>
+
+                <strong>
+                    Quiz
+                </strong>
+
+            </div>
+
+
+            <div class="type-card" data-type="holiday">
+
+                <span class="icon">
+                    🎉
+                </span>
+
+                <strong>
+                    Holiday
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+         EDITOR
+    ================================================== -->
+
+        <div class="editor">
+
+
+            <!-- =================================================
+             LEFT PANEL
+        ================================================== -->
+
+            <div class="panel">
+
+
+                <h2>
+                    ✏️ Create Your Poster
+                </h2>
+
+
+
+                <!-- POSTER SIZE -->
+
+                <label>
+                    Poster Size
+                </label>
+
+                <select id="size">
+
+                    <option value="portrait">
+                        Instagram Portrait — 1080 × 1350
+                    </option>
+
+                    <option value="square">
+                        Instagram Square — 1080 × 1080
+                    </option>
+
+                    <option value="story">
+                        Instagram Story / WhatsApp — 1080 × 1920
+                    </option>
+
+                    <option value="long">
+                        Long Poster — 1080 × 1600
+                    </option>
+
+                </select>
+
+
+                <div class="size-info" id="sizeInfo">
+
+                    Current size: 1080 × 1350
+
+                </div>
+
+
+
+                <!-- WEBSITE -->
+
+                <label>
+                    Website / Brand Name 🔒
+                </label>
+
+                <input id="website" value="Krishna Computer Cafe | krishnaprep.in" readonly class="locked-field">
+
+
+
+                <!-- DATE -->
+
+                <label>
+                    Date
+                </label>
+
+                <input id="date" value="28 August 2026">
+
+
+
+                <!-- =================================================
+                 POST FIELDS
+            ================================================== -->
+
+                <div id="postFields">
+
+
+                    <label>
+                        Post Title
+                    </label>
+
+                    <input id="postTitle" value="Important Day">
+
+
+                    <label>
+                        Heading
+                    </label>
+
+                    <input id="postHeading" value="National Sports Day">
+
+
+                    <label>
+                        Description
+                    </label>
+
+                    <textarea
+                        id="postDescription">National Sports Day is observed to promote sports, fitness and awareness about the importance of physical activities.</textarea>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                 STATIC GK
+            ================================================== -->
+
+                <div id="gkFields" style="display:none;">
+
+
+                    <label>
+                        GK Category
+                    </label>
+
+                    <input id="gkCategory" value="STATIC GK">
+
+
+                    <label>
+                        Question
+                    </label>
+
+                    <textarea id="gkQuestion">Which is the largest planet in our Solar System?</textarea>
+
+
+                    <label>
+                        Option A
+                    </label>
+
+                    <input id="gkA" value="Earth">
+
+
+                    <label>
+                        Option B
+                    </label>
+
+                    <input id="gkB" value="Jupiter">
+
+
+                    <label>
+                        Option C
+                    </label>
+
+                    <input id="gkC" value="Mars">
+
+
+                    <label>
+                        Option D
+                    </label>
+
+                    <input id="gkD" value="Venus">
+
+
+                    <label>
+                        GK Fact / Explanation
+                    </label>
+
+                    <textarea id="gkFact">Jupiter is the largest planet in our Solar System.</textarea>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                 CURRENT AFFAIRS
+            ================================================== -->
+
+                <div id="currentFields" style="display:none;">
+
+
+                    <label>
+                        Category
+                    </label>
+
+                    <input id="currentCategory" value="NATIONAL AFFAIRS">
+
+
+                    <label>
+                        Current Affairs Title
+                    </label>
+
+                    <textarea id="currentTitle">India Advances Major Government Initiatives</textarea>
+
+
+                    <label>
+                        Summary
+                    </label>
+
+                    <textarea
+                        id="currentSummary">Several important government initiatives remained in focus, reflecting India's focus on development, technology, innovation and youth participation.</textarea>
+
+
+                    <label>
+                        Important Facts
+                    </label>
+
+                    <textarea id="currentFacts">Focus: Development and Innovation
+Government: Government of India
+Area: National Development
+Importance: Competitive Examinations</textarea>
+
+
+                    <label>
+                        Source
+                    </label>
+
+                    <input id="currentSource" value="Press Information Bureau">
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                 QUIZ
+            ================================================== -->
+
+                <div id="quizFields" style="display:none;">
+
+
+                    <label>
+                        Quiz Category
+                    </label>
+
+                    <input id="quizCategory" value="DAILY QUIZ">
+
+
+                    <label>
+                        Question
+                    </label>
+
+                    <textarea id="quizQuestion">Which planet is known as the Red Planet?</textarea>
+
+
+                    <label>
+                        Option A
+                    </label>
+
+                    <input id="quizA" value="Earth">
+
+
+                    <label>
+                        Option B
+                    </label>
+
+                    <input id="quizB" value="Mars">
+
+
+                    <label>
+                        Option C
+                    </label>
+
+                    <input id="quizC" value="Jupiter">
+
+
+                    <label>
+                        Option D
+                    </label>
+
+                    <input id="quizD" value="Venus">
+
+
+                    <label>
+                        Correct Answer
+                    </label>
+
+                    <input id="quizAnswer" value="B) Mars">
+
+
+                    <label>
+                        Explanation
+                    </label>
+
+                    <textarea
+                        id="quizExplanation">Mars is commonly known as the Red Planet because of its reddish appearance.</textarea>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                 HOLIDAY
+            ================================================== -->
+
+                <div id="holidayFields" style="display:none;">
+
+
+                    <label>
+                        Holiday Category
+                    </label>
+
+                    <input id="holidayCategory" value="NATIONAL HOLIDAY">
+
+
+                    <label>
+                        Holiday Name
+                    </label>
+
+                    <input id="holidayName" value="Independence Day">
+
+
+                    <label>
+                        Holiday Date
+                    </label>
+
+                    <input id="holidayDate" value="15 August">
+
+
+                    <label>
+                        Holiday Description
+                    </label>
+
+                    <textarea
+                        id="holidayDescription">Independence Day is celebrated every year on 15 August to commemorate India's independence from British rule in 1947.</textarea>
+
+
+                    <label>
+                        Important Information
+                    </label>
+
+                    <textarea id="holidayFacts">Year: 1947
+Date: 15 August
+Country: India
+Importance: Independence of India</textarea>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                 FOOTER CONTACT
+            ================================================== -->
+
+                <label>
+                    Footer Contact
+                </label>
+
+                <input id="contact" value="Follow us • Join WhatsApp Group • Instagram">
+
+
+
+                <!-- =================================================
+                 WATERMARK UPLOAD
+            ================================================== -->
+
+                <label>
+                    Watermark Logo 🔒
+                </label>
+
+                <input type="file" id="watermarkImageInput" accept="image/png,image/jpeg,image/webp">
+
+
+                <small style="display:block;margin-top:6px;color:#64748b;">
+
+                    Upload your website logo. It will appear as a light watermark.
+
+                </small>
+
+
+
+                <!-- DOWNLOAD -->
+
+                <button class="download" onclick="downloadPoster()">
+
+                    📥 Download Poster PNG
+
+                </button>
+
+
+
+                <!-- RESET -->
+
+                <button class="reset" onclick="location.reload()">
+
+                    🔄 Reset
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+             LIVE PREVIEW
+        ================================================== -->
+
+            <div class="preview-wrapper">
+
+
+                <div class="preview-title">
+
+                    👁️ Live Preview
+
+                </div>
+
+
+                <div class="preview-area">
+
+
+                    <div id="poster">
+
+
+                        <!-- WATERMARK -->
+
+                        <div class="watermark">
+
+                            <img id="watermarkImagePreview" src="./img/Logo.png" alt="Watermark">
+
+                        </div>
+
+
+
+                        <!-- POSTER CONTENT -->
+
+                        <div class="poster-content">
+
+
+                            <!-- HEADER -->
+
+                            <div class="poster-header">
+
+
+                                <div class="brand" id="brand">
+
+                                    Krishna Computer Cafe | krishnaprep.in
+
+                                </div>
+
+
+                                <div class="poster-date" id="posterDate">
+
+                                    28 August 2026
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- BODY -->
+
+                            <div class="poster-body" id="posterBody">
+
+                            </div>
+
+
+
+                            <!-- FOOTER -->
+
+                            <div class="poster-footer">
+
+
+                                <strong>
+
+                                    Krishna Computer Cafe | krishnaprep.in
+
+                                </strong>
+
+
+                                <br>
+
+
+                                <span id="posterContact">
+
+                                    Follow us • Join WhatsApp Group • Instagram
+
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+     HTML2CANVAS
+===================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="./js/script.js"></script>
+
+
+
+
+</body>
+
+</html>
