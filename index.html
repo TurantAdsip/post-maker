@@ -1,23 +1,41 @@
+\
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>KrishnaPrep Post Maker</title>
 
+
     <style>
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
         * {
             box-sizing: border-box;
         }
 
+        html,
         body {
             margin: 0;
+            padding: 0;
+        }
+
+        body {
             font-family: Arial, Helvetica, sans-serif;
             background: #f1f5f9;
             color: #111827;
         }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         .header {
             background: linear-gradient(135deg, #1d4ed8, #7c3aed);
@@ -33,8 +51,13 @@
 
         .header p {
             margin: 7px 0 0;
-            opacity: .9;
+            opacity: 0.9;
         }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
 
         .container {
             max-width: 1200px;
@@ -42,7 +65,10 @@
             padding: 20px;
         }
 
-        /* TYPE SELECTOR */
+
+        /* =====================================================
+           TYPE SELECTOR
+        ===================================================== */
 
         .type-selector {
             display: grid;
@@ -58,8 +84,8 @@
             padding: 20px 10px;
             text-align: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
-            transition: .2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: 0.2s;
         }
 
         .type-card:hover {
@@ -81,16 +107,10 @@
             font-size: 17px;
         }
 
-        /* LOCKED-FIELD*/
-        .locked-field {
-            background: #f1f5f9;
-            color: #1d4ed8;
-            font-weight: bold;
-            cursor: not-allowed;
-            border: 1px solid #94a3b8;
-        }
 
-        /* EDITOR */
+        /* =====================================================
+           EDITOR
+        ===================================================== */
 
         .editor {
             display: grid;
@@ -99,17 +119,27 @@
             align-items: start;
         }
 
+
+        /* =====================================================
+           LEFT PANEL
+        ===================================================== */
+
         .panel {
             background: white;
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .panel h2 {
             margin-top: 0;
             font-size: 20px;
         }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
 
         label {
             display: block;
@@ -140,6 +170,24 @@
             border-color: #2563eb;
         }
 
+
+        /* =====================================================
+           LOCKED FIELD
+        ===================================================== */
+
+        .locked-field {
+            background: #f1f5f9;
+            color: #1d4ed8;
+            font-weight: bold;
+            cursor: not-allowed;
+            border: 1px solid #94a3b8;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
         button {
             border: 0;
             padding: 12px 16px;
@@ -156,6 +204,10 @@
             color: white;
         }
 
+        .download:hover {
+            background: #15803d;
+        }
+
         .reset {
             width: 100%;
             margin-top: 8px;
@@ -163,7 +215,14 @@
             color: #111827;
         }
 
-        /* SIZE */
+        .reset:hover {
+            background: #d1d5db;
+        }
+
+
+        /* =====================================================
+           SIZE INFO
+        ===================================================== */
 
         .size-info {
             background: #eff6ff;
@@ -171,67 +230,139 @@
             border-radius: 8px;
             font-size: 13px;
             color: #1e40af;
+            margin-top: 8px;
         }
 
-        /* POSTER AREA */
+
+        /* =====================================================
+           LIVE PREVIEW
+        ===================================================== */
+
+        .preview-wrapper {
+            position: sticky;
+            top: 20px;
+        }
+
+        .preview-title {
+            background: white;
+            padding: 13px 15px;
+            border-radius: 12px 12px 0 0;
+            font-weight: bold;
+            color: #1e40af;
+            border-bottom: 1px solid #dbeafe;
+        }
 
         .preview-area {
             display: flex;
             justify-content: center;
             align-items: flex-start;
             overflow: auto;
-            padding: 20px;
+            padding: 25px;
             background: #dbeafe;
-            border-radius: 15px;
+            border-radius: 0 0 15px 15px;
             min-height: 600px;
         }
 
-        /* POSTER */
+
+        /* =====================================================
+           POSTER
+        ===================================================== */
 
         #poster {
             width: 540px;
             height: 675px;
+
             background: #ffffff;
+
             position: relative;
+
             overflow: hidden;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, .2);
+
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.20);
+
             flex-shrink: 0;
         }
 
-        /* WATERMARK */
+
+        /* =====================================================
+           WATERMARK
+        ===================================================== */
 
         .watermark {
             position: absolute;
-            inset: 0;
+
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
             display: flex;
-            align-items: center;
+
             justify-content: center;
+
+            align-items: center;
+
             pointer-events: none;
+
             z-index: 1;
-            transform: rotate(-30deg);
         }
 
-        .watermark span {
-            font-size: 55px;
-            font-weight: 900;
-            color: rgba(30, 64, 175, .07);
-            white-space: nowrap;
+        .watermark img {
+            width: 300px;
+
+            max-width: 70%;
+
+            height: auto;
+
+            opacity: 0.08;
+
+            object-fit: contain;
+
+            transform: none !important;
+
+            rotate: none !important;
+
+            display: block;
         }
 
-        /* POSTER CONTENT */
+
+        /* =====================================================
+           POSTER CONTENT
+           IMPORTANT FOR FOOTER
+        ===================================================== */
 
         .poster-content {
             position: relative;
-            z-index: 2;
+
+            z-index: 3;
+
+            width: 100%;
+
             height: 100%;
+
             display: flex;
+
             flex-direction: column;
         }
 
+
+        /* =====================================================
+           POSTER HEADER
+        ===================================================== */
+
         .poster-header {
+            position: relative;
+
+            z-index: 5;
+
+            flex-shrink: 0;
+
             background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+
             color: white;
+
             padding: 22px 25px;
+
             text-align: center;
         }
 
@@ -243,45 +374,99 @@
         .poster-date {
             font-size: 13px;
             margin-top: 5px;
-            opacity: .9;
+            opacity: 0.9;
         }
 
+
+        /* =====================================================
+           POSTER BODY
+        ===================================================== */
+
         .poster-body {
-            padding: 25px;
+            position: relative;
+
+            z-index: 5;
+
             flex: 1;
+
+            min-height: 0;
+
+            padding: 25px;
+
             overflow: hidden;
         }
 
+
+        /* =====================================================
+           BADGE
+        ===================================================== */
+
         .badge {
             display: inline-block;
+
             background: #dbeafe;
+
             color: #1d4ed8;
+
             padding: 7px 12px;
+
             border-radius: 20px;
+
             font-size: 12px;
+
             font-weight: bold;
+
             margin-bottom: 12px;
         }
 
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
         .poster-title {
             font-size: 29px;
+
             line-height: 1.2;
+
             margin: 5px 0 15px;
+
             color: #111827;
         }
 
+
+        /* =====================================================
+           TEXT
+        ===================================================== */
+
         .poster-text {
             font-size: 16px;
+
             line-height: 1.6;
+
             color: #374151;
+
             white-space: pre-line;
         }
 
+
+        /* =====================================================
+           GK BOX
+        ===================================================== */
+
         .gk-box {
+            position: relative;
+
+            z-index: 5;
+
             margin-top: 15px;
-            background: #f8fafc;
+
+            background: rgba(248, 250, 252, 0.88);
+
             border-left: 5px solid #2563eb;
+
             padding: 14px;
+
             border-radius: 8px;
         }
 
@@ -291,98 +476,152 @@
 
         .gk-list {
             margin: 8px 0 0;
+
             padding-left: 20px;
+
             line-height: 1.7;
         }
 
+
+        /* =====================================================
+           QUIZ QUESTION
+        ===================================================== */
+
         .quiz-question {
-            background: #eff6ff;
+            position: relative;
+
+            z-index: 5;
+
+            background: rgba(239, 246, 255, 0.88);
+
             padding: 15px;
+
             border-radius: 10px;
+
             font-size: 18px;
+
             font-weight: bold;
+
             line-height: 1.5;
         }
+
+
+        /* =====================================================
+           OPTIONS
+        ===================================================== */
 
         .options {
             margin-top: 12px;
         }
 
         .option {
+            position: relative;
+
+            z-index: 5;
+
             padding: 10px 12px;
+
             margin: 7px 0;
+
             border: 1px solid #cbd5e1;
+
             border-radius: 7px;
-            background: white;
+
+            background: rgba(255, 255, 255, 0.88);
         }
 
+
+        /* =====================================================
+           ANSWER
+        ===================================================== */
+
         .answer {
+            position: relative;
+
+            z-index: 5;
+
             margin-top: 15px;
+
             padding: 12px;
-            background: #dcfce7;
+
+            background: rgba(220, 252, 231, 0.92);
+
             color: #166534;
+
             border-radius: 8px;
+
             font-weight: bold;
         }
+
+
+        /* =====================================================
+           SOURCE
+        ===================================================== */
 
         .source {
             margin-top: 15px;
+
             font-size: 12px;
+
             color: #64748b;
         }
 
-        /* HOLIDAY */
+
+        /* =====================================================
+           HOLIDAY
+        ===================================================== */
 
         .holiday-box {
-            text-align: center;
-            background: linear-gradient(135deg, #eff6ff, #f5f3ff);
-            padding: 22px 15px;
-            border-radius: 14px;
-            border: 1px solid #dbeafe;
+            margin-top: 18px;
+
+            padding: 18px;
+
+            background: rgba(255, 247, 237, 0.92);
+
+            border-left: 5px solid #f97316;
+
+            border-radius: 10px;
         }
 
-        .holiday-icon {
-            font-size: 55px;
-            margin-bottom: 10px;
-        }
-
-        .holiday-title {
-            font-size: 30px;
-            line-height: 1.2;
-            margin: 8px 0;
-            color: #1d4ed8;
-            font-weight: 900;
-        }
-
-        .holiday-occasion {
-            font-size: 18px;
-            font-weight: bold;
-            color: #7c3aed;
-            margin-bottom: 12px;
+        .holiday-box strong {
+            color: #c2410c;
         }
 
         .holiday-date {
-            display: inline-block;
-            background: #1d4ed8;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
+            font-size: 22px;
+
             font-weight: bold;
-            margin-bottom: 15px;
+
+            margin: 10px 0;
+
+            color: #111827;
         }
 
-        .holiday-message {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #374151;
-        }
+
+        /* =====================================================
+           POSTER FOOTER
+           THIS STAYS AT BOTTOM
+        ===================================================== */
 
         .poster-footer {
+            position: relative;
+
+            z-index: 5;
+
+            flex-shrink: 0;
+
+            width: 100%;
+
             background: #111827;
+
             color: white;
+
             padding: 15px 20px;
+
             text-align: center;
+
             font-size: 12px;
+
             line-height: 1.6;
         }
 
@@ -390,9 +629,39 @@
             font-size: 14px;
         }
 
-        /* RESPONSIVE */
 
-        @media(max-width:950px) {
+        /* =====================================================
+   RESPONSIVE - PHONE / TABLET / LAPTOP
+===================================================== */
+
+        /* Large Laptop / Desktop */
+        @media (min-width: 1200px) {
+
+            .container {
+                max-width: 1200px;
+            }
+
+        }
+
+
+        /* Laptop / Small Desktop */
+        @media (max-width: 1100px) {
+
+            .editor {
+                grid-template-columns: 340px 1fr;
+                gap: 20px;
+            }
+
+            .type-selector {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 10px;
+            }
+
+        }
+
+
+        /* Tablet */
+        @media (max-width: 950px) {
 
             .type-selector {
                 grid-template-columns: repeat(3, 1fr);
@@ -402,19 +671,29 @@
                 grid-template-columns: 1fr;
             }
 
-            .preview-area {
-                justify-content: flex-start;
+            .preview-wrapper {
+                position: static;
             }
+
+            .preview-area {
+                justify-content: center;
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+
         }
 
-        @media(max-width:600px) {
+
+        /* Large / Medium Phone */
+        @media (max-width: 700px) {
+
+            .container {
+                padding: 12px;
+            }
 
             .type-selector {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .container {
-                padding: 10px;
+                gap: 10px;
             }
 
             .type-card {
@@ -425,741 +704,1589 @@
                 font-size: 28px;
             }
 
-            #poster {
-                transform-origin: top left;
+            .type-card strong {
+                font-size: 15px;
             }
+
+            .panel {
+                padding: 15px;
+            }
+
+            .preview-area {
+                padding: 15px;
+                justify-content: flex-start;
+            }
+
+        }
+
+
+        /* Small Phone */
+        @media (max-width: 480px) {
+
+            .header {
+                padding: 18px 10px;
+            }
+
+            .header h1 {
+                font-size: 23px;
+            }
+
+            .header p {
+                font-size: 13px;
+            }
+
+            .container {
+                padding: 8px;
+            }
+
+            .type-selector {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .type-card {
+                padding: 12px 4px;
+                border-radius: 12px;
+            }
+
+            .type-card .icon {
+                font-size: 25px;
+                margin-bottom: 5px;
+            }
+
+            .type-card strong {
+                font-size: 13px;
+            }
+
+            .panel {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .panel h2 {
+                font-size: 18px;
+            }
+
+            input,
+            textarea,
+            select {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .preview-area {
+                padding: 10px;
+            }
+
+        }
+
+
+        /* Very Small Phone */
+        @media (max-width: 360px) {
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .header p {
+                font-size: 12px;
+            }
+
+            .type-card {
+                padding: 10px 3px;
+            }
+
+            .type-card .icon {
+                font-size: 22px;
+            }
+
+            .type-card strong {
+                font-size: 12px;
+            }
+
         }
     </style>
+
 </head>
+
 
 <body>
 
+
+    <!-- =====================================================
+     PAGE HEADER
+===================================================== -->
+
     <header class="header">
-        <h1>KrishnaPrep Post Maker</h1>
-        <p>Create Posts • Static GK • Current Affairs • Quiz • Holidays</p>
+
+        <h1>
+            KrishnaPrep Post Maker
+        </h1>
+
+        <p>
+            Create Posts • Static GK • Current Affairs • Quiz • Holidays
+        </p>
+
     </header>
+
+
+
+    <!-- =====================================================
+     MAIN
+===================================================== -->
 
     <div class="container">
 
-        <!-- TYPE SELECTOR -->
+
+        <!-- =================================================
+         TYPE SELECTOR
+    ================================================== -->
 
         <div class="type-selector">
 
+
             <div class="type-card active" data-type="post">
-                <span class="icon">📰</span>
-                <strong>Post</strong>
+
+                <span class="icon">
+                    📰
+                </span>
+
+                <strong>
+                    Post
+                </strong>
+
             </div>
+
 
             <div class="type-card" data-type="gk">
-                <span class="icon">📚</span>
-                <strong>Static GK</strong>
+
+                <span class="icon">
+                    📚
+                </span>
+
+                <strong>
+                    Static GK
+                </strong>
+
             </div>
+
 
             <div class="type-card" data-type="current">
-                <span class="icon">🗞️</span>
-                <strong>Current Affairs</strong>
+
+                <span class="icon">
+                    🗞️
+                </span>
+
+                <strong>
+                    Current Affairs
+                </strong>
+
             </div>
+
 
             <div class="type-card" data-type="quiz">
-                <span class="icon">❓</span>
-                <strong>Quiz</strong>
+
+                <span class="icon">
+                    ❓
+                </span>
+
+                <strong>
+                    Quiz
+                </strong>
+
             </div>
 
-            <!-- NEW HOLIDAY -->
 
             <div class="type-card" data-type="holiday">
-                <span class="icon">🎉</span>
-                <strong>Holiday</strong>
+
+                <span class="icon">
+                    🎉
+                </span>
+
+                <strong>
+                    Holiday
+                </strong>
+
             </div>
+
 
         </div>
 
 
+
+        <!-- =================================================
+         EDITOR
+    ================================================== -->
+
         <div class="editor">
 
-            <!-- LEFT PANEL -->
+
+            <!-- =================================================
+             LEFT PANEL
+        ================================================== -->
 
             <div class="panel">
 
-                <h2>✏️ Create Your Poster</h2>
 
-                <label>Poster Size</label>
+                <h2>
+                    ✏️ Create Your Poster
+                </h2>
+
+
+
+                <!-- POSTER SIZE -->
+
+                <label>
+                    Poster Size
+                </label>
 
                 <select id="size">
-                    <option value="portrait">Instagram Portrait — 1080 × 1350</option>
-                    <option value="square">Instagram Square — 1080 × 1080</option>
-                    <option value="story">Instagram Story / WhatsApp — 1080 × 1920</option>
-                    <option value="long">Long Poster — 1080 × 1600</option>
+
+                    <option value="portrait">
+                        Instagram Portrait — 1080 × 1350
+                    </option>
+
+                    <option value="square">
+                        Instagram Square — 1080 × 1080
+                    </option>
+
+                    <option value="story">
+                        Instagram Story / WhatsApp — 1080 × 1920
+                    </option>
+
+                    <option value="long">
+                        Long Poster — 1080 × 1600
+                    </option>
+
                 </select>
 
+
                 <div class="size-info" id="sizeInfo">
+
                     Current size: 1080 × 1350
+
                 </div>
 
-                <!-- Brand Name And Website -->
-                <!-- <label>Website / Brand Name</label>
-                <input id="website" value="Krishna Computer Cafe | krishnaprep.in"> -->
-                <label>Website / Brand Name 🔒</label>
-                <input id="website" value="Krishna Computer Cafe | krishnaprep.in" readonly class="locked-field"
-                    title="Website / Brand Name is locked">
 
 
-                <label>Date</label>
+                <!-- WEBSITE -->
+
+                <label>
+                    Website / Brand Name 🔒
+                </label>
+
+                <input id="website" value="Krishna Computer Cafe | krishnaprep.in" readonly class="locked-field">
+
+
+
+                <!-- DATE -->
+
+                <label>
+                    Date
+                </label>
+
                 <input id="date" value="28 August 2026">
 
 
-                <!-- POST -->
+
+                <!-- =================================================
+                 POST FIELDS
+            ================================================== -->
 
                 <div id="postFields">
 
-                    <label>Post Title</label>
+
+                    <label>
+                        Post Title
+                    </label>
+
                     <input id="postTitle" value="Important Day">
 
-                    <label>Heading</label>
+
+                    <label>
+                        Heading
+                    </label>
+
                     <input id="postHeading" value="National Sports Day">
 
-                    <label>Description</label>
+
+                    <label>
+                        Description
+                    </label>
+
                     <textarea
                         id="postDescription">National Sports Day is observed to promote sports, fitness and awareness about the importance of physical activities.</textarea>
 
+
                 </div>
 
 
-                <!-- GK -->
+
+                <!-- =================================================
+                 STATIC GK
+            ================================================== -->
 
                 <div id="gkFields" style="display:none;">
 
-                    <label>GK Category</label>
+
+                    <label>
+                        GK Category
+                    </label>
+
                     <input id="gkCategory" value="STATIC GK">
 
-                    <label>Question</label>
+
+                    <label>
+                        Question
+                    </label>
+
                     <textarea id="gkQuestion">Which is the largest planet in our Solar System?</textarea>
 
-                    <label>Option A</label>
+
+                    <label>
+                        Option A
+                    </label>
+
                     <input id="gkA" value="Earth">
 
-                    <label>Option B</label>
+
+                    <label>
+                        Option B
+                    </label>
+
                     <input id="gkB" value="Jupiter">
 
-                    <label>Option C</label>
+
+                    <label>
+                        Option C
+                    </label>
+
                     <input id="gkC" value="Mars">
 
-                    <label>Option D</label>
+
+                    <label>
+                        Option D
+                    </label>
+
                     <input id="gkD" value="Venus">
 
-                    <label>GK Fact / Explanation</label>
+
+                    <label>
+                        GK Fact / Explanation
+                    </label>
+
                     <textarea id="gkFact">Jupiter is the largest planet in our Solar System.</textarea>
+
 
                 </div>
 
 
-                <!-- CURRENT AFFAIRS -->
+
+                <!-- =================================================
+                 CURRENT AFFAIRS
+            ================================================== -->
 
                 <div id="currentFields" style="display:none;">
 
-                    <label>Category</label>
+
+                    <label>
+                        Category
+                    </label>
+
                     <input id="currentCategory" value="NATIONAL AFFAIRS">
 
-                    <label>Current Affairs Title</label>
+
+                    <label>
+                        Current Affairs Title
+                    </label>
+
                     <textarea id="currentTitle">India Advances Major Government Initiatives</textarea>
 
-                    <label>Summary</label>
+
+                    <label>
+                        Summary
+                    </label>
+
                     <textarea
                         id="currentSummary">Several important government initiatives remained in focus, reflecting India's focus on development, technology, innovation and youth participation.</textarea>
 
-                    <label>Important Facts</label>
+
+                    <label>
+                        Important Facts
+                    </label>
+
                     <textarea id="currentFacts">Focus: Development and Innovation
 Government: Government of India
 Area: National Development
 Importance: Competitive Examinations</textarea>
 
-                    <label>Source</label>
+
+                    <label>
+                        Source
+                    </label>
+
                     <input id="currentSource" value="Press Information Bureau">
+
 
                 </div>
 
 
-                <!-- QUIZ -->
+
+                <!-- =================================================
+                 QUIZ
+            ================================================== -->
 
                 <div id="quizFields" style="display:none;">
 
-                    <label>Quiz Category</label>
+
+                    <label>
+                        Quiz Category
+                    </label>
+
                     <input id="quizCategory" value="DAILY QUIZ">
 
-                    <label>Question</label>
+
+                    <label>
+                        Question
+                    </label>
+
                     <textarea id="quizQuestion">Which planet is known as the Red Planet?</textarea>
 
-                    <label>Option A</label>
+
+                    <label>
+                        Option A
+                    </label>
+
                     <input id="quizA" value="Earth">
 
-                    <label>Option B</label>
+
+                    <label>
+                        Option B
+                    </label>
+
                     <input id="quizB" value="Mars">
 
-                    <label>Option C</label>
+
+                    <label>
+                        Option C
+                    </label>
+
                     <input id="quizC" value="Jupiter">
 
-                    <label>Option D</label>
+
+                    <label>
+                        Option D
+                    </label>
+
                     <input id="quizD" value="Venus">
 
-                    <label>Correct Answer</label>
+
+                    <label>
+                        Correct Answer
+                    </label>
+
                     <input id="quizAnswer" value="B) Mars">
 
-                    <label>Explanation</label>
+
+                    <label>
+                        Explanation
+                    </label>
+
                     <textarea
                         id="quizExplanation">Mars is commonly known as the Red Planet because of its reddish appearance.</textarea>
 
+
                 </div>
 
 
-                <!-- HOLIDAY -->
+
+                <!-- =================================================
+                 HOLIDAY
+            ================================================== -->
 
                 <div id="holidayFields" style="display:none;">
 
-                    <label>Holiday Name</label>
-                    <input id="holidayName" value="Raksha Bandhan">
 
-                    <label>Occasion / Type</label>
-                    <input id="holidayOccasion" value="Festival">
+                    <label>
+                        Holiday Category
+                    </label>
 
-                    <label>Holiday Date</label>
-                    <input id="holidayDate" value="28 August 2026">
+                    <input id="holidayCategory" value="NATIONAL HOLIDAY">
 
-                    <label>Holiday Description</label>
+
+                    <label>
+                        Holiday Name
+                    </label>
+
+                    <input id="holidayName" value="Independence Day">
+
+
+                    <label>
+                        Holiday Date
+                    </label>
+
+                    <input id="holidayDate" value="15 August">
+
+
+                    <label>
+                        Holiday Description
+                    </label>
+
                     <textarea
-                        id="holidayDescription">Raksha Bandhan is a festival celebrating the bond of love, care and protection between brothers and sisters.</textarea>
+                        id="holidayDescription">Independence Day is celebrated every year on 15 August to commemorate India's independence from British rule in 1947.</textarea>
 
-                    <label>Greeting / Message</label>
-                    <textarea id="holidayMessage">Wishing everyone a very Happy Raksha Bandhan!</textarea>
+
+                    <label>
+                        Important Information
+                    </label>
+
+                    <textarea id="holidayFacts">Year: 1947
+Date: 15 August
+Country: India
+Importance: Independence of India</textarea>
+
 
                 </div>
 
 
-                <label>Footer Contact</label>
+
+                <!-- =================================================
+                 FOOTER CONTACT
+            ================================================== -->
+
+                <label>
+                    Footer Contact
+                </label>
+
                 <input id="contact" value="Follow us • Join WhatsApp Group • Instagram">
 
-                <!-- Watermarks -->
-                <!-- <label>Watermark Text</label>
-                <input id="watermark" value="KRISHNAPREP.IN"> -->
-                <label>Watermark Text 🔒</label>
-                <input id="watermark" value="krishnaprep.in" readonly class="locked-field"
-                    title="Watermark Text is locked">
 
+
+                <!-- =================================================
+                 WATERMARK UPLOAD
+            ================================================== -->
+
+                <label>
+                    Watermark Logo 🔒
+                </label>
+
+                <input type="file" id="watermarkImageInput" accept="image/png,image/jpeg,image/webp">
+
+
+                <small style="display:block;margin-top:6px;color:#64748b;">
+
+                    Upload your website logo. It will appear as a light watermark.
+
+                </small>
+
+
+
+                <!-- DOWNLOAD -->
 
                 <button class="download" onclick="downloadPoster()">
+
                     📥 Download Poster PNG
+
                 </button>
 
+
+
+                <!-- RESET -->
+
                 <button class="reset" onclick="location.reload()">
+
                     🔄 Reset
+
                 </button>
+
 
             </div>
 
 
-            <!-- PREVIEW -->
 
-            <div class="preview-area">
+            <!-- =================================================
+             LIVE PREVIEW
+        ================================================== -->
 
-                <div id="poster">
-
-                    <div class="watermark">
-                        <span id="watermarkText">KRISHNAPREP.IN</span>
-                    </div>
-
-                    <div class="poster-content">
-
-                        <div class="poster-header">
-
-                            <div class="brand" id="brand">
-                                KRISHNAPREP.IN
-                            </div>
-
-                            <div class="poster-date" id="posterDate">
-                                28 August 2026
-                            </div>
-
-                        </div>
+            <div class="preview-wrapper">
 
 
-                        <div class="poster-body" id="posterBody">
+                <div class="preview-title">
 
-                            <!-- CONTENT GENERATED BY JS -->
-
-                        </div>
-
-
-                        <div class="poster-footer">
-
-                            <strong>KRISHNAPREP.IN</strong><br>
-
-                            <span id="posterContact">
-                                Follow us • Join WhatsApp Group • Instagram
-                            </span>
-
-                        </div>
-
-                    </div>
+                    👁️ Live Preview
 
                 </div>
 
+
+                <div class="preview-area">
+
+
+                    <div id="poster">
+
+
+                        <!-- WATERMARK -->
+
+                        <div class="watermark">
+
+                            <img id="watermarkImagePreview" src="logo.png" alt="Watermark">
+
+                        </div>
+
+
+
+                        <!-- POSTER CONTENT -->
+
+                        <div class="poster-content">
+
+
+                            <!-- HEADER -->
+
+                            <div class="poster-header">
+
+
+                                <div class="brand" id="brand">
+
+                                    Krishna Computer Cafe | krishnaprep.in
+
+                                </div>
+
+
+                                <div class="poster-date" id="posterDate">
+
+                                    28 August 2026
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- BODY -->
+
+                            <div class="poster-body" id="posterBody">
+
+                            </div>
+
+
+
+                            <!-- FOOTER -->
+
+                            <div class="poster-footer">
+
+
+                                <strong>
+
+                                    Krishna Computer Cafe | krishnaprep.in
+
+                                </strong>
+
+
+                                <br>
+
+
+                                <span id="posterContact">
+
+                                    Follow us • Join WhatsApp Group • Instagram
+
+                                </span>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
             </div>
 
+
         </div>
+
 
     </div>
 
 
-    <!-- HTML2CANVAS -->
+
+    <!-- =====================================================
+     HTML2CANVAS
+===================================================== -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 
     <script>
 
-        /* ==========================
-           GLOBAL VARIABLES
-        ========================== */
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
 
         let currentType = "post";
 
 
-        /* ==========================
+
+        /* =====================================================
            TYPE SELECTOR
-        ========================== */
+        ===================================================== */
 
-        document.querySelectorAll(".type-card").forEach(card => {
+        document
+            .querySelectorAll(".type-card")
+            .forEach(card => {
 
-            card.addEventListener("click", function () {
+                card.addEventListener("click", function () {
 
-                document.querySelectorAll(".type-card")
-                    .forEach(c => c.classList.remove("active"));
 
-                this.classList.add("active");
+                    document
+                        .querySelectorAll(".type-card")
+                        .forEach(c =>
+                            c.classList.remove("active")
+                        );
 
-                currentType = this.dataset.type;
 
-                showFields();
+                    this.classList.add("active");
 
-                updatePoster();
+
+                    currentType =
+                        this.dataset.type;
+
+
+                    showFields();
+
+
+                    updatePoster();
+
+
+                });
 
             });
 
-        });
 
 
-        /* ==========================
-           SHOW FORM FIELDS
-        ========================== */
+        /* =====================================================
+           SHOW FIELDS
+        ===================================================== */
 
         function showFields() {
 
+
             document.getElementById("postFields").style.display =
-                currentType === "post" ? "block" : "none";
+                currentType === "post"
+                    ? "block"
+                    : "none";
+
 
             document.getElementById("gkFields").style.display =
-                currentType === "gk" ? "block" : "none";
+                currentType === "gk"
+                    ? "block"
+                    : "none";
+
 
             document.getElementById("currentFields").style.display =
-                currentType === "current" ? "block" : "none";
+                currentType === "current"
+                    ? "block"
+                    : "none";
+
 
             document.getElementById("quizFields").style.display =
-                currentType === "quiz" ? "block" : "none";
+                currentType === "quiz"
+                    ? "block"
+                    : "none";
+
 
             document.getElementById("holidayFields").style.display =
-                currentType === "holiday" ? "block" : "none";
+                currentType === "holiday"
+                    ? "block"
+                    : "none";
 
         }
 
 
-        /* ==========================
+
+        /* =====================================================
            GET VALUE
-        ========================== */
+        ===================================================== */
 
         function value(id) {
 
-            return document.getElementById(id).value;
+            return document
+                .getElementById(id)
+                .value;
 
         }
 
 
-        /* ==========================
-           UPDATE POSTER
-        ========================== */
 
-        function updatePoster() {
-
-            document.getElementById("brand").textContent =
-                value("website");
-
-            document.getElementById("posterDate").textContent =
-                value("date");
-
-            document.getElementById("posterContact").textContent =
-                value("contact");
-
-            document.getElementById("watermarkText").textContent =
-                value("watermark");
-
-
-            let html = "";
-
-
-            /* POST */
-
-            if (currentType === "post") {
-
-                html = `
-
-            <span class="badge">📰 IMPORTANT POST</span>
-
-            <h1 class="poster-title">
-                ${escapeHTML(value("postTitle"))}
-            </h1>
-
-            <h2>
-                ${escapeHTML(value("postHeading"))}
-            </h2>
-
-            <p class="poster-text">
-                ${escapeHTML(value("postDescription"))}
-            </p>
-
-        `;
-
-            }
-
-
-            /* STATIC GK */
-
-            if (currentType === "gk") {
-
-                html = `
-
-            <span class="badge">
-                📚 ${escapeHTML(value("gkCategory"))}
-            </span>
-
-            <div class="quiz-question">
-                ${escapeHTML(value("gkQuestion"))}
-            </div>
-
-            <div class="options">
-
-                <div class="option">
-                    <b>A)</b> ${escapeHTML(value("gkA"))}
-                </div>
-
-                <div class="option">
-                    <b>B)</b> ${escapeHTML(value("gkB"))}
-                </div>
-
-                <div class="option">
-                    <b>C)</b> ${escapeHTML(value("gkC"))}
-                </div>
-
-                <div class="option">
-                    <b>D)</b> ${escapeHTML(value("gkD"))}
-                </div>
-
-            </div>
-
-            <div class="gk-box">
-
-                <strong>💡 GK FACT</strong>
-
-                <p>
-                    ${escapeHTML(value("gkFact"))}
-                </p>
-
-            </div>
-
-        `;
-
-            }
-
-
-            /* CURRENT AFFAIRS */
-
-            if (currentType === "current") {
-
-                let facts = value("currentFacts")
-                    .split("\n")
-                    .filter(x => x.trim() !== "");
-
-                let factHTML = facts.map(f =>
-                    `<li>${escapeHTML(f)}</li>`
-                ).join("");
-
-                html = `
-
-            <span class="badge">
-                🗞️ ${escapeHTML(value("currentCategory"))}
-            </span>
-
-            <h1 class="poster-title">
-                ${escapeHTML(value("currentTitle"))}
-            </h1>
-
-            <p class="poster-text">
-                ${escapeHTML(value("currentSummary"))}
-            </p>
-
-            <div class="gk-box">
-
-                <strong>📌 IMPORTANT FACTS</strong>
-
-                <ul class="gk-list">
-                    ${factHTML}
-                </ul>
-
-            </div>
-
-            <div class="source">
-                Source: ${escapeHTML(value("currentSource"))}
-            </div>
-
-        `;
-
-            }
-
-
-            /* QUIZ */
-
-            if (currentType === "quiz") {
-
-                html = `
-
-            <span class="badge">
-                ❓ ${escapeHTML(value("quizCategory"))}
-            </span>
-
-            <div class="quiz-question">
-                ${escapeHTML(value("quizQuestion"))}
-            </div>
-
-            <div class="options">
-
-                <div class="option">
-                    <b>A)</b> ${escapeHTML(value("quizA"))}
-                </div>
-
-                <div class="option">
-                    <b>B)</b> ${escapeHTML(value("quizB"))}
-                </div>
-
-                <div class="option">
-                    <b>C)</b> ${escapeHTML(value("quizC"))}
-                </div>
-
-                <div class="option">
-                    <b>D)</b> ${escapeHTML(value("quizD"))}
-                </div>
-
-            </div>
-
-            <div class="answer">
-                ✅ Correct Answer: ${escapeHTML(value("quizAnswer"))}
-            </div>
-
-            <div class="gk-box">
-
-                <strong>💡 Explanation</strong>
-
-                <p>
-                    ${escapeHTML(value("quizExplanation"))}
-                </p>
-
-            </div>
-
-        `;
-
-            }
-
-
-            /* HOLIDAY */
-
-            if (currentType === "holiday") {
-
-                html = `
-
-            <div class="holiday-box">
-
-                <div class="holiday-icon">
-                    🎉
-                </div>
-
-                <span class="badge">
-                    🗓️ HOLIDAY / FESTIVAL
-                </span>
-
-                <h1 class="holiday-title">
-                    ${escapeHTML(value("holidayName"))}
-                </h1>
-
-                <div class="holiday-occasion">
-                    ${escapeHTML(value("holidayOccasion"))}
-                </div>
-
-                <div class="holiday-date">
-                    📅 ${escapeHTML(value("holidayDate"))}
-                </div>
-
-                <p class="holiday-message">
-                    ${escapeHTML(value("holidayDescription"))}
-                </p>
-
-                <div class="gk-box">
-
-                    <strong>💐 GREETINGS</strong>
-
-                    <p class="poster-text">
-                        ${escapeHTML(value("holidayMessage"))}
-                    </p>
-
-                </div>
-
-            </div>
-
-        `;
-
-            }
-
-
-            document.getElementById("posterBody").innerHTML = html;
-
-        }
-
-
-        /* ==========================
+        /* =====================================================
            ESCAPE HTML
-        ========================== */
+        ===================================================== */
 
         function escapeHTML(text) {
 
-            return text
+            return String(text)
+
                 .replace(/&/g, "&amp;")
+
                 .replace(/</g, "&lt;")
+
                 .replace(/>/g, "&gt;")
+
                 .replace(/"/g, "&quot;")
+
                 .replace(/'/g, "&#039;");
 
         }
 
 
-        /* ==========================
-           SIZE
-        ========================== */
 
-        document.getElementById("size").addEventListener("change", function () {
+        /* =====================================================
+           UPDATE POSTER
+        ===================================================== */
 
-            let poster = document.getElementById("poster");
-
-            let size = this.value;
+        function updatePoster() {
 
 
-            if (size === "portrait") {
+            const fixedBrand =
+                "Krishna Computer Cafe | krishnaprep.in";
 
-                poster.style.width = "540px";
-                poster.style.height = "675px";
 
-                document.getElementById("sizeInfo").textContent =
-                    "Current size: 1080 × 1350";
+            document.getElementById("brand").textContent =
+                fixedBrand;
+
+
+            document.getElementById("posterDate").textContent =
+                value("date");
+
+
+            document.getElementById("posterContact").textContent =
+                value("contact");
+
+
+            let html = "";
+
+
+
+            /* =================================================
+               POST
+            ================================================== */
+
+            if (currentType === "post") {
+
+
+                html = `
+
+            <span class="badge">
+
+                📰 IMPORTANT POST
+
+            </span>
+
+
+            <h1 class="poster-title">
+
+                ${escapeHTML(
+                    value("postTitle")
+                )}
+
+            </h1>
+
+
+            <h2>
+
+                ${escapeHTML(
+                    value("postHeading")
+                )}
+
+            </h2>
+
+
+            <p class="poster-text">
+
+                ${escapeHTML(
+                    value("postDescription")
+                )}
+
+            </p>
+
+        `;
 
             }
 
 
-            if (size === "square") {
 
-                poster.style.width = "540px";
-                poster.style.height = "540px";
+            /* =================================================
+               STATIC GK
+            ================================================== */
 
-                document.getElementById("sizeInfo").textContent =
-                    "Current size: 1080 × 1080";
+            if (currentType === "gk") {
+
+
+                html = `
+
+            <span class="badge">
+
+                📚
+                ${escapeHTML(
+                    value("gkCategory")
+                )}
+
+            </span>
+
+
+            <div class="quiz-question">
+
+                ${escapeHTML(
+                    value("gkQuestion")
+                )}
+
+            </div>
+
+
+            <div class="options">
+
+
+                <div class="option">
+
+                    <b>A)</b>
+                    ${escapeHTML(
+                    value("gkA")
+                )}
+
+                </div>
+
+
+                <div class="option">
+
+                    <b>B)</b>
+                    ${escapeHTML(
+                    value("gkB")
+                )}
+
+                </div>
+
+
+                <div class="option">
+
+                    <b>C)</b>
+                    ${escapeHTML(
+                    value("gkC")
+                )}
+
+                </div>
+
+
+                <div class="option">
+
+                    <b>D)</b>
+                    ${escapeHTML(
+                    value("gkD")
+                )}
+
+                </div>
+
+
+            </div>
+
+
+            <div class="gk-box">
+
+
+                <strong>
+
+                    💡 GK FACT
+
+                </strong>
+
+
+                <p>
+
+                    ${escapeHTML(
+                    value("gkFact")
+                )}
+
+                </p>
+
+
+            </div>
+
+        `;
 
             }
 
 
-            if (size === "story") {
 
-                poster.style.width = "540px";
-                poster.style.height = "960px";
+            /* =================================================
+               CURRENT AFFAIRS
+            ================================================== */
 
-                document.getElementById("sizeInfo").textContent =
-                    "Current size: 1080 × 1920";
+            if (currentType === "current") {
+
+
+                const facts =
+                    value("currentFacts")
+                        .split("\n")
+                        .filter(
+                            x =>
+                                x.trim() !== ""
+                        );
+
+
+                const factHTML =
+                    facts
+                        .map(
+                            f =>
+                                `<li>${escapeHTML(f)}</li>`
+                        )
+                        .join("");
+
+
+                html = `
+
+            <span class="badge">
+
+                🗞️
+                ${escapeHTML(
+                    value("currentCategory")
+                )}
+
+            </span>
+
+
+            <h1 class="poster-title">
+
+                ${escapeHTML(
+                    value("currentTitle")
+                )}
+
+            </h1>
+
+
+            <p class="poster-text">
+
+                ${escapeHTML(
+                    value("currentSummary")
+                )}
+
+            </p>
+
+
+            <div class="gk-box">
+
+
+                <strong>
+
+                    📌 IMPORTANT FACTS
+
+                </strong>
+
+
+                <ul class="gk-list">
+
+                    ${factHTML}
+
+                </ul>
+
+
+            </div>
+
+
+            <div class="source">
+
+                Source:
+                ${escapeHTML(
+                    value("currentSource")
+                )}
+
+            </div>
+
+        `;
 
             }
 
 
-            if (size === "long") {
 
-                poster.style.width = "540px";
-                poster.style.height = "800px";
+            /* =================================================
+               QUIZ
+            ================================================== */
 
-                document.getElementById("sizeInfo").textContent =
-                    "Current size: 1080 × 1600";
+            if (currentType === "quiz") {
+
+
+                html = `
+
+            <span class="badge">
+
+                ❓
+                ${escapeHTML(
+                    value("quizCategory")
+                )}
+
+            </span>
+
+
+            <div class="quiz-question">
+
+                ${escapeHTML(
+                    value("quizQuestion")
+                )}
+
+            </div>
+
+
+            <div class="options">
+
+
+                <div class="option">
+
+                    <b>A)</b>
+                    ${escapeHTML(
+                    value("quizA")
+                )}
+
+                </div>
+
+
+                <div class="option">
+
+                    <b>B)</b>
+                    ${escapeHTML(
+                    value("quizB")
+                )}
+
+                </div>
+
+
+                <div class="option">
+
+                    <b>C)</b>
+                    ${escapeHTML(
+                    value("quizC")
+                )}
+
+                </div>
+
+
+                <div class="option">
+
+                    <b>D)</b>
+                    ${escapeHTML(
+                    value("quizD")
+                )}
+
+                </div>
+
+
+            </div>
+
+
+            <div class="answer">
+
+                ✅ Correct Answer:
+
+                ${escapeHTML(
+                    value("quizAnswer")
+                )}
+
+            </div>
+
+
+            <div class="gk-box">
+
+
+                <strong>
+
+                    💡 Explanation
+
+                </strong>
+
+
+                <p>
+
+                    ${escapeHTML(
+                    value("quizExplanation")
+                )}
+
+                </p>
+
+
+            </div>
+
+        `;
 
             }
 
-        });
 
 
-        /* ==========================
-           LIVE UPDATE
-        ========================== */
+            /* =================================================
+               HOLIDAY
+            ================================================== */
 
-        document.querySelectorAll("input, textarea, select")
-            .forEach(element => {
-
-                element.addEventListener("input", updatePoster);
-                element.addEventListener("change", updatePoster);
-
-            });
+            if (currentType === "holiday") {
 
 
-        /* ==========================
-           DOWNLOAD PNG
-        ========================== */
-
-        async function downloadPoster() {
-
-            const poster = document.getElementById("poster");
-
-            const canvas = await html2canvas(poster, {
-
-                scale: 2,
-
-                useCORS: true,
-
-                backgroundColor: "#ffffff"
-
-            });
+                const facts =
+                    value("holidayFacts")
+                        .split("\n")
+                        .filter(
+                            x =>
+                                x.trim() !== ""
+                        );
 
 
-            const link = document.createElement("a");
+                const factHTML =
+                    facts
+                        .map(
+                            f =>
+                                `<li>${escapeHTML(f)}</li>`
+                        )
+                        .join("");
 
-            link.download =
-                "KrishnaPrep-" +
-                currentType +
-                "-" +
-                Date.now() +
-                ".png";
 
-            link.href = canvas.toDataURL("image/png");
+                html = `
 
-            link.click();
+            <span class="badge">
+
+                🎉
+                ${escapeHTML(
+                    value("holidayCategory")
+                )}
+
+            </span>
+
+
+            <h1 class="poster-title">
+
+                ${escapeHTML(
+                    value("holidayName")
+                )}
+
+            </h1>
+
+
+            <div class="holiday-box">
+
+
+                <strong>
+
+                    📅 HOLIDAY DATE
+
+                </strong>
+
+
+                <div class="holiday-date">
+
+                    ${escapeHTML(
+                    value("holidayDate")
+                )}
+
+                </div>
+
+
+                <p class="poster-text">
+
+                    ${escapeHTML(
+                    value("holidayDescription")
+                )}
+
+                </p>
+
+
+            </div>
+
+
+            <div class="gk-box">
+
+
+                <strong>
+
+                    📌 IMPORTANT INFORMATION
+
+                </strong>
+
+
+                <ul class="gk-list">
+
+                    ${factHTML}
+
+                </ul>
+
+
+            </div>
+
+        `;
+
+            }
+
+
+
+            document.getElementById("posterBody").innerHTML =
+                html;
 
         }
 
 
-        /* ==========================
+
+        /* =====================================================
+           POSTER SIZE
+        ===================================================== */
+
+        document
+            .getElementById("size")
+            .addEventListener(
+                "change",
+                function () {
+
+
+                    const poster =
+                        document.getElementById("poster");
+
+
+                    const size =
+                        this.value;
+
+
+
+                    if (size === "portrait") {
+
+
+                        poster.style.width =
+                            "540px";
+
+
+                        poster.style.height =
+                            "675px";
+
+
+                        document.getElementById(
+                            "sizeInfo"
+                        ).textContent =
+                            "Current size: 1080 × 1350";
+
+                    }
+
+
+
+                    if (size === "square") {
+
+
+                        poster.style.width =
+                            "540px";
+
+
+                        poster.style.height =
+                            "540px";
+
+
+                        document.getElementById(
+                            "sizeInfo"
+                        ).textContent =
+                            "Current size: 1080 × 1080";
+
+                    }
+
+
+
+                    if (size === "story") {
+
+
+                        poster.style.width =
+                            "540px";
+
+
+                        poster.style.height =
+                            "960px";
+
+
+                        document.getElementById(
+                            "sizeInfo"
+                        ).textContent =
+                            "Current size: 1080 × 1920";
+
+                    }
+
+
+
+                    if (size === "long") {
+
+
+                        poster.style.width =
+                            "540px";
+
+
+                        poster.style.height =
+                            "800px";
+
+
+                        document.getElementById(
+                            "sizeInfo"
+                        ).textContent =
+                            "Current size: 1080 × 1600";
+
+                    }
+
+                }
+            );
+
+
+
+        /* =====================================================
+           LIVE UPDATE
+        ===================================================== */
+
+        document
+            .querySelectorAll(
+                "input:not([type='file']), textarea, select"
+            )
+            .forEach(element => {
+
+
+                element.addEventListener(
+                    "input",
+                    updatePoster
+                );
+
+
+                element.addEventListener(
+                    "change",
+                    updatePoster
+                );
+
+            });
+
+
+
+        /* =====================================================
+           WATERMARK UPLOAD
+        ===================================================== */
+
+        document
+            .getElementById(
+                "watermarkImageInput"
+            )
+            .addEventListener(
+                "change",
+                function (event) {
+
+
+                    const file =
+                        event.target.files[0];
+
+
+                    if (!file) {
+
+                        return;
+
+                    }
+
+
+                    const reader =
+                        new FileReader();
+
+
+                    reader.onload =
+                        function (e) {
+
+
+                            document.getElementById(
+                                "watermarkImagePreview"
+                            ).src =
+                                e.target.result;
+
+
+                        };
+
+
+                    reader.readAsDataURL(file);
+
+                }
+            );
+
+
+
+        /* =====================================================
+           DOWNLOAD POSTER
+        ===================================================== */
+
+        async function downloadPoster() {
+
+
+            const poster =
+                document.getElementById("poster");
+
+
+            try {
+
+
+                const canvas =
+                    await html2canvas(
+                        poster,
+                        {
+
+                            scale: 2,
+
+                            useCORS: true,
+
+                            allowTaint: true,
+
+                            backgroundColor: "#ffffff"
+
+                        }
+                    );
+
+
+                const link =
+                    document.createElement("a");
+
+
+                link.download =
+                    "KrishnaPrep-" +
+                    currentType +
+                    "-" +
+                    Date.now() +
+                    ".png";
+
+
+                link.href =
+                    canvas.toDataURL(
+                        "image/png"
+                    );
+
+
+                link.click();
+
+
+            } catch (error) {
+
+
+                console.error(error);
+
+
+                alert(
+                    "Poster download failed. Please try again."
+                );
+
+            }
+
+        }
+
+
+
+        /* =====================================================
            INITIAL LOAD
-        ========================== */
+        ===================================================== */
 
         showFields();
 
         updatePoster();
 
     </script>
+
 
 </body>
 
