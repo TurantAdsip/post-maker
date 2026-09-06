@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,9 +23,7 @@
 
     <header class="header">
 
-        <h1>
-            KrishnaPrep Post Maker
-        </h1>
+        <h1>KrishnaPrep Post Maker</h1>
 
         <p>
             Create Posts • Static GK • Current Affairs • Quiz • Holidays
@@ -45,75 +42,38 @@
 
         <!-- =================================================
          TYPE SELECTOR
-    ================================================== -->
+         ================================================== -->
 
         <div class="type-selector">
 
-
             <div class="type-card active" data-type="post">
-
-                <span class="icon">
-                    📰
-                </span>
-
-                <strong>
-                    Post
-                </strong>
-
+                <span class="icon">📰</span>
+                <strong>Post</strong>
             </div>
-
 
             <div class="type-card" data-type="gk">
-
-                <span class="icon">
-                    📚
-                </span>
-
-                <strong>
-                    Static GK
-                </strong>
-
+                <span class="icon">📚</span>
+                <strong>Static GK</strong>
             </div>
-
 
             <div class="type-card" data-type="current">
-
-                <span class="icon">
-                    🗞️
-                </span>
-
-                <strong>
-                    Current Affairs
-                </strong>
-
+                <span class="icon">🗞️</span>
+                <strong>Current Affairs</strong>
             </div>
-
 
             <div class="type-card" data-type="quiz">
-
-                <span class="icon">
-                    ❓
-                </span>
-
-                <strong>
-                    Quiz
-                </strong>
-
+                <span class="icon">❓</span>
+                <strong>Quiz</strong>
             </div>
-
 
             <div class="type-card" data-type="holiday">
-
-                <span class="icon">
-                    🎉
-                </span>
-
-                <strong>
-                    Holiday
-                </strong>
-
+                <span class="icon">🎉</span>
+                <strong>Holiday</strong>
             </div>
-
+            <div class="type-card" data-type="motivation">
+                <span class="icon">💪</span>
+                <strong>Motivation</strong>
+            </div>
 
         </div>
 
@@ -132,46 +92,7 @@
 
             <div class="panel">
 
-
-                <h2>
-                    ✏️ Create Your Poster
-                </h2>
-
-
-
-                <!-- POSTER SIZE -->
-
-                <label>
-                    Poster Size
-                </label>
-
-                <select id="size">
-
-                    <option value="portrait">
-                        Instagram Portrait — 1080 × 1350
-                    </option>
-
-                    <option value="square">
-                        Instagram Square — 1080 × 1080
-                    </option>
-
-                    <option value="story">
-                        Instagram Story / WhatsApp — 1080 × 1920
-                    </option>
-
-                    <option value="long">
-                        Long Poster — 1080 × 1600
-                    </option>
-
-                </select>
-
-
-                <div class="size-info" id="sizeInfo">
-
-                    Current size: 1080 × 1350
-
-                </div>
-
+                <h2>✏️ Create Your Poster</h2>
 
 
                 <!-- WEBSITE -->
@@ -183,14 +104,13 @@
                 <input id="website" value="Krishna Computer Cafe | krishnaprep.in" readonly class="locked-field">
 
 
-
                 <!-- DATE -->
 
                 <label>
                     Date
                 </label>
 
-                <input id="date" value="28 September 2026">
+                <input type="date" id="date" readonly class="locked-field">
 
 
 
@@ -199,7 +119,6 @@
             ================================================== -->
 
                 <div id="postFields">
-
 
                     <label>
                         Post Title
@@ -222,7 +141,6 @@
                     <textarea
                         id="postDescription">National Sports Day is observed to promote sports, fitness and awareness about the importance of physical activities.</textarea>
 
-
                 </div>
 
 
@@ -232,7 +150,6 @@
             ================================================== -->
 
                 <div id="gkFields" style="display:none;">
-
 
                     <label>
                         GK Category
@@ -282,7 +199,6 @@
 
                     <textarea id="gkFact">Jupiter is the largest planet in our Solar System.</textarea>
 
-
                 </div>
 
 
@@ -292,7 +208,6 @@
             ================================================== -->
 
                 <div id="currentFields" style="display:none;">
-
 
                     <label>
                         Category
@@ -332,7 +247,6 @@ Importance: Competitive Examinations</textarea>
 
                     <input id="currentSource" value="Press Information Bureau">
 
-
                 </div>
 
 
@@ -342,7 +256,6 @@ Importance: Competitive Examinations</textarea>
             ================================================== -->
 
                 <div id="quizFields" style="display:none;">
-
 
                     <label>
                         Quiz Category
@@ -400,7 +313,6 @@ Importance: Competitive Examinations</textarea>
                     <textarea
                         id="quizExplanation">Mars is commonly known as the Red Planet because of its reddish appearance.</textarea>
 
-
                 </div>
 
 
@@ -410,7 +322,6 @@ Importance: Competitive Examinations</textarea>
             ================================================== -->
 
                 <div id="holidayFields" style="display:none;">
-
 
                     <label>
                         Holiday Category
@@ -430,7 +341,7 @@ Importance: Competitive Examinations</textarea>
                         Holiday Date
                     </label>
 
-                    <input id="holidayDate" value="15 September">
+                    <input id="holidayDate" value="15 August">
 
 
                     <label>
@@ -438,7 +349,7 @@ Importance: Competitive Examinations</textarea>
                     </label>
 
                     <textarea
-                        id="holidayDescription">Independence Day is celebrated every year on 15 September to commemorate India's independence from British rule in 1947.</textarea>
+                        id="holidayDescription">Independence Day is celebrated every year on 15 August to commemorate India's independence from British rule in 1947.</textarea>
 
 
                     <label>
@@ -446,10 +357,69 @@ Importance: Competitive Examinations</textarea>
                     </label>
 
                     <textarea id="holidayFacts">Year: 1947
-Date: 15 September
-Country: India
-Importance: Independence of India</textarea>
+                        Date: 15 August
+                        Country: India
+                        Importance: Independence of India</textarea>
 
+                </div>
+
+                <!-- =================================================
+     MOTIVATION
+================================================== -->
+
+                <div id="motivationFields" style="display:none;">
+
+                    <!-- MOTIVATION CATEGORY -->
+
+                    <label>
+                        Motivation Category
+                    </label>
+
+                    <input id="motivationCategory" value="DAILY MOTIVATION">
+
+
+                    <!-- MOTIVATION TITLE -->
+
+                    <label>
+                        Motivation Title
+                    </label>
+
+                    <input id="motivationTitle" value="Believe in Yourself">
+
+
+                    <!-- MOTIVATIONAL QUOTE -->
+
+                    <label>
+                        Motivational Quote
+                    </label>
+
+                    <textarea
+                        id="motivationQuote">Success begins with self-belief. Keep working hard, stay focused and never give up.
+                    </textarea>
+
+
+                    <!-- MOTIVATION MESSAGE -->
+
+                    <label>
+                        Motivation Message
+                    </label>
+
+                    <textarea
+                        id="motivationMessage">Every small step takes you closer to your goal. Keep learning, keep improving and keep moving forward.
+                    </textarea>
+              
+                
+                    <!-- IMAGE -->
+
+                    <!-- <label>
+                        Upload Main Image
+                    </label>
+
+                    <input type="file" id="motivationImageInput" accept="image/png,image/jpeg,image/webp">
+
+                    <small class="image-note">
+                        Main image will automatically appear in the motivation poster.
+                    </small> -->
 
                 </div>
 
@@ -463,25 +433,22 @@ Importance: Independence of India</textarea>
                     Footer Contact
                 </label>
 
-                <input id="contact" value="Follow us • Join WhatsApp Group • Instagram">
-
+                <input id="contact" value="Follow us • Join WhatsApp Channel • Instagram">
 
 
                 <!-- =================================================
-                 WATERMARK UPLOAD
+                 MAIN IMAGE
             ================================================== -->
 
                 <label>
-                    Watermark Logo 🔒
+                    Upload Main Image
                 </label>
 
-                <input type="file" id="watermarkImageInput" accept="image/png,image/jpeg,image/webp">
+                <input type="file" id="mainImageInput" accept="image/png,image/jpeg,image/webp">
 
 
-                <small style="display:block;margin-top:6px;color:#64748b;">
-
-                    Upload your website logo. It will appear as a light watermark.
-
+                <small class="image-note">
+                    Main image will automatically appear in the poster.
                 </small>
 
 
@@ -489,21 +456,15 @@ Importance: Independence of India</textarea>
                 <!-- DOWNLOAD -->
 
                 <button class="download" onclick="downloadPoster()">
-
                     📥 Download Poster PNG
-
                 </button>
-
 
 
                 <!-- RESET -->
 
-                <button class="reset" onclick="location.reload()">
-
+                <button class="reset" onclick="resetMaker()">
                     🔄 Reset
-
                 </button>
-
 
             </div>
 
@@ -515,21 +476,19 @@ Importance: Independence of India</textarea>
 
             <div class="preview-wrapper">
 
-
                 <div class="preview-title">
-
                     👁️ Live Preview
-
                 </div>
 
 
                 <div class="preview-area">
 
-
                     <div id="poster">
 
 
-                        <!-- WATERMARK -->
+                        <!-- =================================================
+                         FIXED WATERMARK
+                    ================================================= -->
 
                         <div class="watermark">
 
@@ -539,7 +498,9 @@ Importance: Independence of India</textarea>
 
 
 
-                        <!-- POSTER CONTENT -->
+                        <!-- =================================================
+                         POSTER CONTENT
+                    ================================================= -->
 
                         <div class="poster-content">
 
@@ -548,20 +509,23 @@ Importance: Independence of India</textarea>
 
                             <div class="poster-header">
 
-
                                 <div class="brand" id="brand">
-
                                     Krishna Computer Cafe | krishnaprep.in
-
                                 </div>
 
 
                                 <div class="poster-date" id="posterDate">
-
-                                    28 September 2026
-
                                 </div>
 
+                            </div>
+
+
+
+                            <!-- MAIN IMAGE -->
+
+                            <div id="mainImageContainer" class="main-image-container" style="display:none;">
+
+                                <img id="mainImagePreview" alt="Main Image">
 
                             </div>
 
@@ -570,7 +534,6 @@ Importance: Independence of India</textarea>
                             <!-- BODY -->
 
                             <div class="poster-body" id="posterBody">
-
                             </div>
 
 
@@ -579,41 +542,27 @@ Importance: Independence of India</textarea>
 
                             <div class="poster-footer">
 
-
                                 <strong>
-
                                     Krishna Computer Cafe | krishnaprep.in
-
                                 </strong>
-
 
                                 <br>
 
-
                                 <span id="posterContact">
-
-                                    Follow us • Join WhatsApp Group • Instagram
-
+                                    Follow us • Join WhatsApp Channel • Instagram
                                 </span>
-
 
                             </div>
 
-
                         </div>
-
 
                     </div>
 
-
                 </div>
-
 
             </div>
 
-
         </div>
-
 
     </div>
 
@@ -624,9 +573,8 @@ Importance: Independence of India</textarea>
 ===================================================== -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
     <script src="./js/script.js"></script>
-
-
 
 
 </body>
