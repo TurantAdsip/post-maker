@@ -391,78 +391,75 @@ function updatePoster() {
     /* =================================================
        QUIZ
     ================================================== */
-
-    if (currentType === "quiz") {
-
+  if (currentType === "quiz") {
 
         html = `
 
-            <span class="badge">
-
-                ❓
-                ${escapeHTML(
+        <span class="badge">
+            ❓
+            ${escapeHTML(
             value("quizCategory")
         )}
+        </span>
 
-            </span>
-
-
-            <div class="quiz-question">
-
-                ${escapeHTML(
+        <div class="quiz-question">
+            ${escapeHTML(
             value("quizQuestion")
         )}
+        </div>
 
-            </div>
+        <div class="options">
 
-
-            <div class="options">
-
-
-                <div class="option">
-
-                    <b>A)</b>
-                    ${escapeHTML(
+            <div class="option">
+                <b>A)</b>
+                ${escapeHTML(
             value("quizA")
         )}
-
-                </div>
-
-
-                <div class="option">
-
-                    <b>B)</b>
-                    ${escapeHTML(
-            value("quizB")
-        )}
-
-                </div>
-
-
-                <div class="option">
-
-                    <b>C)</b>
-                    ${escapeHTML(
-            value("quizC")
-        )}
-
-                </div>
-
-
-                <div class="option">
-
-                    <b>D)</b>
-                    ${escapeHTML(
-            value("quizD")
-        )}
-
-                </div>
-
-
             </div>
 
+            <div class="option">
+                <b>B)</b>
+                ${escapeHTML(
+            value("quizB")
+        )}
+            </div>
 
-                   `;
+            <div class="option">
+                <b>C)</b>
+                ${escapeHTML(
+            value("quizC")
+        )}
+            </div>
+
+            <div class="option">
+                <b>D)</b>
+                ${escapeHTML(
+            value("quizD")
+        )}
+            </div>
+
+        </div>
+
+        <div class="quiz-answer">
+            <strong>✅ Correct Answer:</strong>
+            ${escapeHTML(
+            value("quizAnswer")
+        )}
+        </div>
+
+        <div class="quiz-explanation">
+
+            <strong>💡 Explanation:</strong>
+
+            <p>
+                ${escapeHTML(
+            value("quizExplanation")
+        )}
+            </p>
+
+        </div>
+
+    `;
 
     }
 
