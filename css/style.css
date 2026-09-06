@@ -1,241 +1,218 @@
 /* =====================================================
-           GLOBAL
-        ===================================================== */
+   GLOBAL
+===================================================== */
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-html,
 body {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f1f5f9;
-    color: #111827;
+    font-family: Arial, sans-serif;
+    background: #eef1f5;
+    color: #222;
 }
 
 
 /* =====================================================
-           HEADER
-        ===================================================== */
+   HEADER
+===================================================== */
 
 .header {
-    background: linear-gradient(135deg, #1d4ed8, #7c3aed);
-    color: white;
-    padding: 22px 15px;
     text-align: center;
+    padding: 18px 10px 12px;
 }
 
 .header h1 {
-    margin: 0;
-    font-size: 28px;
+    font-size: 27px;
+    margin-bottom: 5px;
 }
 
 .header p {
-    margin: 7px 0 0;
-    opacity: 0.9;
+    font-size: 13px;
+    color: #64748b;
 }
 
 
 /* =====================================================
-           MAIN CONTAINER
-        ===================================================== */
+   CONTAINER
+===================================================== */
 
 .container {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: auto;
-    padding: 20px;
+    padding: 10px 16px 20px;
 }
 
 
 /* =====================================================
-           TYPE SELECTOR
-        ===================================================== */
+   TYPE SELECTOR
+===================================================== */
 
 .type-selector {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
-    margin-bottom: 25px;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+    padding-bottom: 2px;
 }
 
 .type-card {
-    background: white;
-    border: 2px solid transparent;
-    border-radius: 15px;
-    padding: 20px 10px;
+    background: #fff;
+    border: 1px solid #d8dee7;
+    border-radius: 8px;
+    padding: 9px 15px;
+    min-width: 110px;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: 0.2s;
+    transition: .2s;
 }
 
 .type-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-1px);
 }
 
 .type-card.active {
-    border-color: #2563eb;
-    background: #eff6ff;
+    background: #1e293b;
+    color: #fff;
+    border-color: #1e293b;
 }
 
 .type-card .icon {
-    font-size: 35px;
     display: block;
-    margin-bottom: 8px;
+    font-size: 19px;
+    margin-bottom: 2px;
 }
 
 .type-card strong {
-    font-size: 17px;
+    font-size: 12px;
 }
 
 
 /* =====================================================
-           EDITOR
-        ===================================================== */
+   EDITOR
+===================================================== */
 
 .editor {
     display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 25px;
+    grid-template-columns: 315px 1fr;
+    gap: 14px;
     align-items: start;
 }
 
 
 /* =====================================================
-           LEFT PANEL
-        ===================================================== */
+   PANEL
+===================================================== */
 
 .panel {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background: #fff;
+    padding: 13px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .07);
 }
 
 .panel h2 {
-    margin-top: 0;
-    font-size: 20px;
+    font-size: 17px;
+    margin-bottom: 10px;
 }
 
 
 /* =====================================================
-           FORM
-        ===================================================== */
+   FORM
+===================================================== */
 
-label {
+.panel label {
     display: block;
-    font-weight: bold;
-    margin-top: 14px;
-    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 8px 0 4px;
 }
 
-input,
-textarea,
-select {
+.panel input,
+.panel textarea,
+.panel select {
     width: 100%;
-    padding: 11px;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 6px;
+    padding: 7px 8px;
+    font-size: 13px;
     outline: none;
+    font-family: Arial, sans-serif;
 }
 
-textarea {
-    min-height: 90px;
+.panel textarea {
+    min-height: 55px;
     resize: vertical;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: #2563eb;
+.panel input:focus,
+.panel textarea:focus,
+.panel select:focus {
+    border-color: #64748b;
 }
-
-
-/* =====================================================
-           LOCKED FIELD
-        ===================================================== */
 
 .locked-field {
     background: #f1f5f9;
-    color: #1d4ed8;
-    font-weight: bold;
+    color: #64748b;
     cursor: not-allowed;
-    border: 1px solid #94a3b8;
+}
+
+.image-note {
+    display: block;
+    color: #64748b;
+    font-size: 10px;
+    margin-top: 4px;
+    line-height: 1.3;
 }
 
 
 /* =====================================================
-           BUTTONS
-        ===================================================== */
+   BUTTONS
+===================================================== */
 
-button {
+.panel button {
+    width: 100%;
     border: 0;
-    padding: 12px 16px;
-    border-radius: 8px;
+    border-radius: 6px;
+    padding: 9px;
+    margin-top: 9px;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.panel button:hover {
+    opacity: .9;
 }
 
 .download {
-    width: 100%;
-    margin-top: 18px;
-    background: #16a34a;
-    color: white;
-}
-
-.download:hover {
-    background: #15803d;
+    background: #1769aa;
+    color: #fff;
 }
 
 .reset {
-    width: 100%;
-    margin-top: 8px;
-    background: #e5e7eb;
-    color: #111827;
-}
-
-.reset:hover {
-    background: #d1d5db;
+    background: #64748b;
+    color: #fff;
 }
 
 
 /* =====================================================
-           SIZE INFO
-        ===================================================== */
-
-.size-info {
-    background: #eff6ff;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #1e40af;
-    margin-top: 8px;
-}
-
-
-/* =====================================================
-           LIVE PREVIEW
-        ===================================================== */
+   PREVIEW
+===================================================== */
 
 .preview-wrapper {
-    position: sticky;
-    top: 20px;
+    background: #d9dee5;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .preview-title {
-    background: white;
-    padding: 13px 15px;
-    border-radius: 12px 12px 0 0;
+    text-align: center;
+    font-size: 13px;
     font-weight: bold;
-    color: #1e40af;
-    border-bottom: 1px solid #dbeafe;
+    margin-bottom: 8px;
 }
 
 .preview-area {
@@ -243,551 +220,560 @@ button {
     justify-content: center;
     align-items: flex-start;
     overflow: auto;
-    padding: 25px;
-    background: #dbeafe;
-    border-radius: 0 0 15px 15px;
-    min-height: 600px;
 }
 
 
 /* =====================================================
-           POSTER
-        ===================================================== */
+   POSTER
+===================================================== */
 
 #poster {
-    width: 540px;
-    height: 675px;
-
-    background: #ffffff;
-
     position: relative;
-
-    overflow: hidden;
-
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.20);
-
-    flex-shrink: 0;
-}
-
-
-/* =====================================================
-           WATERMARK
-        ===================================================== */
-
-.watermark {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    pointer-events: none;
-
-    z-index: 1;
-}
-
-.watermark img {
-    width: 300px;
-
-    max-width: 70%;
-
+    width: 540px;
+    min-height: 540px;
     height: auto;
 
-    opacity: 0.08;
+    background: #ffffff;
+    color: #222222;
 
-    object-fit: contain;
+    /* overflow: hidden; */
+    overflow: visible;
 
-    transform: none !important;
-
-    rotate: none !important;
-
-    display: block;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .20);
+    border-radius: 3px;
 }
 
 
 /* =====================================================
-           POSTER CONTENT
-           IMPORTANT FOR FOOTER
-        ===================================================== */
+   POSTER CONTENT
+===================================================== */
 
 .poster-content {
     position: relative;
+    z-index: 2;
 
-    z-index: 3;
-
-    width: 100%;
-
-    height: 100%;
+    padding: 22px;
 
     display: flex;
-
     flex-direction: column;
+
+    /*
+       Automatic height
+    */
+
+    min-height: 540px;
+    height: auto;
 }
 
 
 /* =====================================================
-           POSTER HEADER
-        ===================================================== */
+   HEADER
+===================================================== */
 
 .poster-header {
-    position: relative;
-
-    z-index: 5;
-
-    flex-shrink: 0;
-
-    background: linear-gradient(135deg, #1d4ed8, #7c3aed);
-
-    color: white;
-
-    padding: 22px 25px;
-
+    display: block;
+    width: 100%;
     text-align: center;
-}
 
-.brand {
-    font-size: 24px;
-    font-weight: 900;
-}
+    background: #e8f1ff;
 
-.poster-date {
-    font-size: 13px;
-    margin-top: 5px;
-    opacity: 0.9;
+    padding: 12px 10px;
+    margin-bottom: 15px;
+
+    border-bottom: 2px solid #2563eb;
+    border-radius: 8px;
 }
 
 
 /* =====================================================
-           POSTER BODY
-        ===================================================== */
+   MAIN IMAGE
+===================================================== */
+
+.main-image-container {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.main-image-container img {
+    width: 100%;
+    height: auto;
+    max-height: 230px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
 
 .poster-body {
-    position: relative;
-
-    z-index: 5;
-
-    flex: 1;
-
-    min-height: 0;
-
-    padding: 25px;
-
-    overflow: hidden;
+    flex: 0 0 auto;
 }
 
 
 /* =====================================================
-           BADGE
-        ===================================================== */
+   BADGE
+===================================================== */
 
 .badge {
     display: inline-block;
 
-    background: #dbeafe;
+    background: rgba(255, 255, 255, .17);
 
-    color: #1d4ed8;
+    border: 1px solid rgba(255, 255, 255, .25);
 
-    padding: 7px 12px;
+    padding: 6px 10px;
 
     border-radius: 20px;
 
-    font-size: 12px;
+    font-size: 10px;
 
-    font-weight: bold;
+    font-weight: 700;
 
     margin-bottom: 12px;
 }
 
 
 /* =====================================================
-           TITLE
-        ===================================================== */
-
-.poster-title {
-    font-size: 29px;
-
-    line-height: 1.2;
-
-    margin: 5px 0 15px;
-
-    color: #111827;
+   TITLE
+===================================================== */
+.poster-title,
+.poster-body h2 {
+    color: #172554;
 }
 
-
-/* =====================================================
-           TEXT
-        ===================================================== */
-
 .poster-text {
-    font-size: 16px;
-
-    line-height: 1.6;
-
-    color: #374151;
-
+    color: #334155;
     white-space: pre-line;
 }
 
+.brand {
+    color: #172554;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.poster-date {
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* .poster-title {
+    font-size: 27px;
+    line-height: 1.15;
+
+    margin-bottom: 10px;
+
+    font-weight: 800;
+} */
+
 
 /* =====================================================
-           GK BOX
-        ===================================================== */
+   HEADINGS
+===================================================== */
 
-.gk-box {
-    position: relative;
+/* .poster-body h2 {
+    font-size: 23px;
+    line-height: 1.2;
 
-    z-index: 5;
+    margin-bottom: 10px;
+} */
 
-    margin-top: 15px;
 
-    background: rgba(248, 250, 252, 0.88);
 
-    border-left: 5px solid #2563eb;
+
+/* =====================================================
+   QUIZ QUESTION
+===================================================== */
+
+.quiz-question {
+    background: rgba(255, 255, 255, .12);
+
+    border: 1px solid rgba(255, 255, 255, .18);
+
+    border-radius: 10px;
 
     padding: 14px;
 
-    border-radius: 8px;
-}
+    font-size: 19px;
 
-.gk-box strong {
-    color: #1d4ed8;
-}
+    line-height: 1.4;
 
-.gk-list {
-    margin: 8px 0 0;
+    font-weight: 700;
 
-    padding-left: 20px;
-
-    line-height: 1.7;
+    margin-bottom: 12px;
 }
 
 
 /* =====================================================
-           QUIZ QUESTION
-        ===================================================== */
-
-.quiz-question {
-    position: relative;
-
-    z-index: 5;
-
-    background: rgba(239, 246, 255, 0.88);
-
-    padding: 15px;
-
-    border-radius: 10px;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    line-height: 1.5;
-}
-
-
-/* =====================================================
-           OPTIONS
-        ===================================================== */
+   OPTIONS
+===================================================== */
 
 .options {
-    margin-top: 12px;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 12px;
 }
 
 .option {
-    position: relative;
+    background: rgba(255, 255, 255, .10);
 
-    z-index: 5;
-
-    padding: 10px 12px;
-
-    margin: 7px 0;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.88);
-}
-
-
-/* =====================================================
-           ANSWER
-        ===================================================== */
-
-.answer {
-    position: relative;
-
-    z-index: 5;
-
-    margin-top: 15px;
-
-    padding: 12px;
-
-    background: rgba(220, 252, 231, 0.92);
-
-    color: #166534;
+    border: 1px solid rgba(255, 255, 255, .18);
 
     border-radius: 8px;
 
-    font-weight: bold;
+    padding: 9px;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+}
+
+.option b {
+    margin-right: 4px;
 }
 
 
 /* =====================================================
-           SOURCE
-        ===================================================== */
+   GK BOX
+===================================================== */
 
-.source {
-    margin-top: 15px;
+.gk-box {
+    background: rgba(255, 255, 255, .12);
+
+    border-left: 4px solid rgba(255, 255, 255, .7);
+
+    border-radius: 8px;
+
+    padding: 11px;
+
+    margin-top: 10px;
+}
+
+.gk-box strong {
+    display: block;
 
     font-size: 12px;
 
-    color: #64748b;
+    margin-bottom: 5px;
+}
+
+.gk-box p {
+    font-size: 12px;
+
+    line-height: 1.45;
+}
+
+.gk-list {
+    padding-left: 17px;
+
+    margin-top: 5px;
+}
+
+.gk-list li {
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    margin-bottom: 2px;
 }
 
 
 /* =====================================================
-           HOLIDAY
-        ===================================================== */
+   QUIZ ANSWER
+===================================================== */
+
+.quiz-answer {
+    background: rgba(255, 255, 255, .15);
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    font-size: 13px;
+
+    margin-bottom: 9px;
+}
+
+
+/* =====================================================
+   QUIZ EXPLANATION
+===================================================== */
+
+.quiz-explanation {
+    background: rgba(255, 255, 255, .10);
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    font-size: 12px;
+
+    line-height: 1.45;
+}
+
+.quiz-explanation strong {
+    display: block;
+
+    margin-bottom: 4px;
+}
+
+
+/* =====================================================
+   HOLIDAY
+===================================================== */
 
 .holiday-box {
-    margin-top: 18px;
-
-    padding: 18px;
-
-    background: rgba(255, 247, 237, 0.92);
-
-    border-left: 5px solid #f97316;
+    background: rgba(255, 255, 255, .12);
 
     border-radius: 10px;
+
+    padding: 13px;
+
+    margin-bottom: 10px;
 }
 
 .holiday-box strong {
-    color: #c2410c;
+    font-size: 11px;
 }
 
 .holiday-date {
-    font-size: 22px;
+    font-size: 27px;
 
-    font-weight: bold;
+    font-weight: 800;
 
-    margin: 10px 0;
-
-    color: #111827;
+    margin: 5px 0 10px;
 }
 
 
 /* =====================================================
-           POSTER FOOTER
-           THIS STAYS AT BOTTOM
-        ===================================================== */
+   SOURCE
+===================================================== */
 
+.source {
+    margin-top: 10px;
+
+    font-size: 10px;
+
+    opacity: .85;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
 .poster-footer {
-    position: relative;
+    margin-top: 25px;
 
-    z-index: 5;
+    padding: 12px 10px;
 
-    flex-shrink: 0;
+    border-top: 2px solid #2563eb;
 
-    width: 100%;
+    background: #e8f1ff;
 
-    background: #111827;
-
-    color: white;
-
-    padding: 15px 20px;
+    border-radius: 8px;
 
     text-align: center;
 
-    font-size: 12px;
+    font-size: 10px;
 
-    line-height: 1.6;
+    line-height: 1.5;
+
+    opacity: 1;
 }
 
 .poster-footer strong {
-    font-size: 14px;
+    font-size: 11px;
+    color: #172554;
+}
+
+.poster-footer span {
+    color: #475569;
+}
+
+/* .poster-footer {
+    margin-top: 25px;
+
+    padding-top: 12px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, .25);
+
+    text-align: center;
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    opacity: .9;
+}
+
+.poster-footer strong {
+    font-size: 11px;
+} */
+
+
+/* =====================================================
+   FIXED WATERMARK
+===================================================== */
+
+.watermark {
+    position: absolute;
+
+    z-index: 1;
+
+    left: 50%;
+    top: 50%;
+
+    width: 72%;
+
+    transform:
+        /* translate(-50%, -50%) rotate(-12deg); */
+        translate(-50%, -50%);
+
+    opacity: .075;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+.watermark img {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    pointer-events: none;
+
+    user-select: none;
 }
 
 
 /* =====================================================
-   RESPONSIVE - PHONE / TABLET / LAPTOP
+   AUTOMATIC HEIGHT SUPPORT
 ===================================================== */
 
-/* Large Laptop / Desktop */
-@media (min-width: 1200px) {
-
-    .container {
-        max-width: 1200px;
-    }
-
+#poster,
+.poster-content {
+    height: auto;
 }
 
 
-/* Laptop / Small Desktop */
-@media (max-width: 1100px) {
+/* =====================================================
+   MOBILE
+===================================================== */
 
-    .editor {
-        grid-template-columns: 340px 1fr;
-        gap: 20px;
-    }
-
-    .type-selector {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 10px;
-    }
-
-}
-
-
-/* Tablet */
-@media (max-width: 950px) {
-
-    .type-selector {
-        grid-template-columns: repeat(3, 1fr);
-    }
+@media(max-width: 850px) {
 
     .editor {
         grid-template-columns: 1fr;
     }
 
     .preview-wrapper {
-        position: static;
-    }
-
-    .preview-area {
-        justify-content: center;
-        overflow-x: auto;
-        overflow-y: hidden;
-    }
-
-}
-
-
-/* Large / Medium Phone */
-@media (max-width: 700px) {
-
-    .container {
-        padding: 12px;
-    }
-
-    .type-selector {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .type-card {
-        padding: 15px 5px;
-    }
-
-    .type-card .icon {
-        font-size: 28px;
-    }
-
-    .type-card strong {
-        font-size: 15px;
+        order: -1;
     }
 
     .panel {
-        padding: 15px;
-    }
-
-    .preview-area {
-        padding: 15px;
-        justify-content: flex-start;
+        width: 100%;
     }
 
 }
 
 
-/* Small Phone */
-@media (max-width: 480px) {
+@media(max-width: 600px) {
+
+    .container {
+        padding: 7px;
+    }
 
     .header {
-        padding: 18px 10px;
+        padding: 12px 7px 8px;
     }
 
     .header h1 {
+        font-size: 21px;
+    }
+
+    .header p {
+        font-size: 11px;
+    }
+
+    .type-selector {
+        gap: 5px;
+    }
+
+    .type-card {
+        min-width: 88px;
+        padding: 7px 9px;
+    }
+
+    .type-card .icon {
+        font-size: 16px;
+    }
+
+    .type-card strong {
+        font-size: 10px;
+    }
+
+    .preview-wrapper {
+        padding: 5px;
+    }
+
+    /*
+       Mobile preview automatically scales
+    */
+
+    #poster {
+        width: min(540px, 100%);
+    }
+
+    .poster-content {
+        padding: 16px;
+    }
+
+    .brand {
+        font-size: 13px;
+    }
+
+    .poster-date {
+        font-size: 9px;
+    }
+
+    .poster-title {
         font-size: 23px;
     }
 
-    .header p {
-        font-size: 13px;
+    .poster-body h2 {
+        font-size: 19px;
     }
 
-    .container {
-        padding: 8px;
-    }
-
-    .type-selector {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-
-    .type-card {
-        padding: 12px 4px;
-        border-radius: 12px;
-    }
-
-    .type-card .icon {
-        font-size: 25px;
-        margin-bottom: 5px;
-    }
-
-    .type-card strong {
-        font-size: 13px;
-    }
-
-    .panel {
-        padding: 12px;
-        border-radius: 12px;
-    }
-
-    .panel h2 {
-        font-size: 18px;
-    }
-
-    input,
-    textarea,
-    select {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .preview-area {
-        padding: 10px;
-    }
-
-}
-
-
-/* Very Small Phone */
-@media (max-width: 360px) {
-
-    .header h1 {
-        font-size: 20px;
-    }
-
-    .header p {
+    .poster-text {
         font-size: 12px;
     }
 
-    .type-card {
-        padding: 10px 3px;
+    .quiz-question {
+        font-size: 16px;
     }
 
-    .type-card .icon {
-        font-size: 22px;
-    }
-
-    .type-card strong {
-        font-size: 12px;
+    .option {
+        font-size: 11px;
     }
 
 }
