@@ -1,11 +1,36 @@
-
-
-
 /* =====================================================
    GLOBAL
 ===================================================== */
 
 let currentType = "post";
+
+
+
+/* =====================================================
+   FIXED BRANDING
+===================================================== */
+
+const FIXED_BRAND =
+    "Krishna Computer Cafe | krishnaprep.in";
+
+
+
+/* =====================================================
+   FIXED WATERMARK
+===================================================== */
+
+/*
+   Logo is NOT uploaded by the user.
+
+   Logo is fixed in the code:
+
+   ./img/Logo.png
+
+   User cannot change it from the interface.
+*/
+
+const FIXED_LOGO_PATH =
+    "./img/Logo.png";
 
 
 
@@ -19,26 +44,20 @@ document
 
         card.addEventListener("click", function () {
 
-
             document
                 .querySelectorAll(".type-card")
                 .forEach(c =>
                     c.classList.remove("active")
                 );
 
-
             this.classList.add("active");
-
 
             currentType =
                 this.dataset.type;
 
-
             showFields();
 
-
             updatePoster();
-
 
         });
 
@@ -51,7 +70,6 @@ document
 ===================================================== */
 
 function showFields() {
-
 
     document.getElementById("postFields").style.display =
         currentType === "post"
@@ -82,6 +100,11 @@ function showFields() {
             ? "block"
             : "none";
 
+    document.getElementById("motivationFields").style.display =
+        currentType === "motivation"
+            ? "block"
+            : "none";
+
 }
 
 
@@ -92,9 +115,14 @@ function showFields() {
 
 function value(id) {
 
-    return document
-        .getElementById(id)
-        .value;
+    const element =
+        document.getElementById(id);
+
+    if (!element) {
+        return "";
+    }
+
+    return element.value;
 
 }
 
@@ -128,17 +156,12 @@ function escapeHTML(text) {
 
 function updatePoster() {
 
-
-    const fixedBrand =
-        "Krishna Computer Cafe | krishnaprep.in";
-
-
     document.getElementById("brand").textContent =
-        fixedBrand;
+        FIXED_BRAND;
 
 
     document.getElementById("posterDate").textContent =
-        value("date");
+        formatDate(value("date"));
 
 
     document.getElementById("posterContact").textContent =
@@ -155,40 +178,28 @@ function updatePoster() {
 
     if (currentType === "post") {
 
-
         html = `
 
             <span class="badge">
-
                 📰 IMPORTANT POST
-
             </span>
 
-
             <h1 class="poster-title">
-
                 ${escapeHTML(
             value("postTitle")
         )}
-
             </h1>
 
-
             <h2>
-
                 ${escapeHTML(
             value("postHeading")
         )}
-
             </h2>
 
-
             <p class="poster-text">
-
                 ${escapeHTML(
             value("postDescription")
         )}
-
             </p>
 
         `;
@@ -202,7 +213,6 @@ function updatePoster() {
     ================================================== */
 
     if (currentType === "gk") {
-
 
         html = `
 
@@ -227,68 +237,51 @@ function updatePoster() {
 
             <div class="options">
 
-
                 <div class="option">
-
                     <b>A)</b>
                     ${escapeHTML(
             value("gkA")
         )}
-
                 </div>
 
 
                 <div class="option">
-
                     <b>B)</b>
                     ${escapeHTML(
             value("gkB")
         )}
-
                 </div>
 
 
                 <div class="option">
-
                     <b>C)</b>
                     ${escapeHTML(
             value("gkC")
         )}
-
                 </div>
 
 
                 <div class="option">
-
                     <b>D)</b>
                     ${escapeHTML(
             value("gkD")
         )}
-
                 </div>
-
 
             </div>
 
 
             <div class="gk-box">
 
-
                 <strong>
-
                     💡 GK FACT
-
                 </strong>
 
-
                 <p>
-
                     ${escapeHTML(
             value("gkFact")
         )}
-
                 </p>
-
 
             </div>
 
@@ -303,7 +296,6 @@ function updatePoster() {
     ================================================== */
 
     if (currentType === "current") {
-
 
         const facts =
             value("currentFacts")
@@ -355,11 +347,8 @@ function updatePoster() {
 
             <div class="gk-box">
 
-
                 <strong>
-
                     📌 IMPORTANT FACTS
-
                 </strong>
 
 
@@ -368,7 +357,6 @@ function updatePoster() {
                     ${factHTML}
 
                 </ul>
-
 
             </div>
 
@@ -391,75 +379,108 @@ function updatePoster() {
     /* =================================================
        QUIZ
     ================================================== */
-  if (currentType === "quiz") {
+
+    if (currentType === "quiz") {
 
         html = `
 
-        <span class="badge">
-            ❓
-            ${escapeHTML(
+            <span class="badge">
+
+                ❓
+                ${escapeHTML(
             value("quizCategory")
         )}
-        </span>
 
-        <div class="quiz-question">
-            ${escapeHTML(
+            </span>
+
+
+            <div class="quiz-question">
+
+                ${escapeHTML(
             value("quizQuestion")
         )}
-        </div>
 
-        <div class="options">
+            </div>
 
-            <div class="option">
-                <b>A)</b>
-                ${escapeHTML(
+
+            <div class="options">
+
+                <div class="option">
+
+                    <b>A)</b>
+
+                    ${escapeHTML(
             value("quizA")
         )}
-            </div>
 
-            <div class="option">
-                <b>B)</b>
-                ${escapeHTML(
+                </div>
+
+
+                <div class="option">
+
+                    <b>B)</b>
+
+                    ${escapeHTML(
             value("quizB")
         )}
-            </div>
 
-            <div class="option">
-                <b>C)</b>
-                ${escapeHTML(
+                </div>
+
+
+                <div class="option">
+
+                    <b>C)</b>
+
+                    ${escapeHTML(
             value("quizC")
         )}
-            </div>
 
-            <div class="option">
-                <b>D)</b>
-                ${escapeHTML(
+                </div>
+
+
+                <div class="option">
+
+                    <b>D)</b>
+
+                    ${escapeHTML(
             value("quizD")
         )}
+
+                </div>
+
             </div>
 
-        </div>
 
-        <div class="quiz-answer">
-            <strong>✅ Correct Answer:</strong>
-            ${escapeHTML(
+            <div class="quiz-answer">
+
+                <strong>
+                    ✅ Correct Answer:
+                </strong>
+
+                ${escapeHTML(
             value("quizAnswer")
         )}
-        </div>
 
-        <div class="quiz-explanation">
+            </div>
 
-            <strong>💡 Explanation:</strong>
 
-            <p>
-                ${escapeHTML(
+            <div class="quiz-explanation">
+
+                <strong>
+                    💡 Explanation:
+                </strong>
+
+                <p>
+
+                    ${escapeHTML(
             value("quizExplanation")
         )}
-            </p>
 
-        </div>
+                </p>
 
-    `;
+            </div>
+
+        `;
 
     }
 
@@ -470,7 +491,6 @@ function updatePoster() {
     ================================================== */
 
     if (currentType === "holiday") {
-
 
         const facts =
             value("holidayFacts")
@@ -513,11 +533,8 @@ function updatePoster() {
 
             <div class="holiday-box">
 
-
                 <strong>
-
                     📅 HOLIDAY DATE
-
                 </strong>
 
 
@@ -538,17 +555,13 @@ function updatePoster() {
 
                 </p>
 
-
             </div>
 
 
             <div class="gk-box">
 
-
                 <strong>
-
                     📌 IMPORTANT INFORMATION
-
                 </strong>
 
 
@@ -558,122 +571,319 @@ function updatePoster() {
 
                 </ul>
 
-
             </div>
 
         `;
 
     }
 
+      /* =====================================================
+   MOTIVATION
+===================================================== */
+
+if (currentType === "motivation") {
+
+    html = `
+        <span class="badge">
+            💪
+            ${escapeHTML(value("motivationCategory"))}
+        </span>
+
+        <h1 class="poster-title">
+            ${escapeHTML(value("motivationTitle"))}
+        </h1>
+
+        <div class="gk-box">
+            <strong>
+                ✨ MOTIVATIONAL QUOTE
+            </strong>
+
+            <p class="poster-text">
+                ${escapeHTML(value("motivationQuote"))}
+            </p>
+        </div>
+
+        <div class="holiday-box">
+            <strong>
+                💡 MOTIVATION
+            </strong>
+
+            <p class="poster-text">
+                ${escapeHTML(value("motivationMessage"))}
+            </p>
+        </div>
+
+        <div class="gk-box">
+            <p class="poster-text">
+                ${escapeHTML(value("motivationExtraText"))}
+            </p>
+        </div>
+    `;
+}
+
 
 
     document.getElementById("posterBody").innerHTML =
         html;
+
+
+    /*
+       Make sure automatic height is recalculated
+       after content changes.
+    */
+
+    requestAnimationFrame(() => {
+
+        autoAdjustPoster();
+
+    });
+
+  
+}
+
+
+
+
+
+/* =====================================================
+   DATE FORMAT
+===================================================== */
+
+/* =====================================================
+   AUTOMATIC CURRENT DATE
+===================================================== */
+
+function setTodayDate() {
+
+    const dateInput =
+        document.getElementById("date");
+
+    if (!dateInput) {
+        return;
+    }
+
+    const today = new Date();
+
+    const year =
+        today.getFullYear();
+
+    const month =
+        String(today.getMonth() + 1).padStart(2, "0");
+
+    const day =
+        String(today.getDate()).padStart(2, "0");
+
+    dateInput.value =
+        `${year}-${month}-${day}`;
+
+}
+
+
+/* Set today's date automatically */
+setTodayDate();
+
+function formatDate(dateValue) {
+
+    if (!dateValue) {
+        return "";
+    }
+
+
+    /*
+       If date input is YYYY-MM-DD
+    */
+
+    const date =
+        new Date(
+            dateValue + "T00:00:00"
+        );
+
+
+    if (isNaN(date.getTime())) {
+        return dateValue;
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+        }
+    );
 
 }
 
 
 
 /* =====================================================
-   POSTER SIZE
+   AUTOMATIC POSTER HEIGHT
+===================================================== */
+
+function autoAdjustPoster() {
+
+    const poster =
+        document.getElementById("poster");
+
+    const content =
+        document.querySelector(".poster-content");
+
+
+    if (!poster || !content) {
+        return;
+    }
+
+
+    /*
+       Reset height first.
+    */
+
+    poster.style.height = "auto";
+
+    content.style.height = "auto";
+
+
+    /*
+       Read actual content height.
+    */
+
+    const requiredHeight =
+        content.scrollHeight;
+
+
+    /*
+       Minimum poster height.
+
+       1080 width / 1:1 ratio
+       gives minimum 1080px actual height.
+
+       Preview uses 540px width,
+       therefore minimum preview height = 540px.
+    */
+
+    const minimumPreviewHeight = 540;
+
+
+    const finalHeight =
+        Math.max(
+            requiredHeight,
+            minimumPreviewHeight
+        );
+
+
+    poster.style.height =
+        finalHeight + "px";
+
+
+    content.style.minHeight =
+        finalHeight + "px";
+
+}
+
+
+
+/* =====================================================
+   MAIN IMAGE UPLOAD
 ===================================================== */
 
 document
-    .getElementById("size")
+    .getElementById("mainImageInput")
     .addEventListener(
         "change",
-        function () {
+        function (event) {
+
+            const file =
+                event.target.files[0];
 
 
-            const poster =
-                document.getElementById("poster");
-
-
-            const size =
-                this.value;
-
-
-
-            if (size === "portrait") {
-
-
-                poster.style.width =
-                    "540px";
-
-
-                poster.style.height =
-                    "675px";
-
-
-                document.getElementById(
-                    "sizeInfo"
-                ).textContent =
-                    "Current size: 1080 × 1350";
-
+            if (!file) {
+                return;
             }
 
 
-
-            if (size === "square") {
-
-
-                poster.style.width =
-                    "540px";
+            const reader =
+                new FileReader();
 
 
-                poster.style.height =
-                    "540px";
+            reader.onload =
+                function (e) {
+
+                    const image =
+                        document.getElementById(
+                            "mainImagePreview"
+                        );
 
 
-                document.getElementById(
-                    "sizeInfo"
-                ).textContent =
-                    "Current size: 1080 × 1080";
-
-            }
+                    const container =
+                        document.getElementById(
+                            "mainImageContainer"
+                        );
 
 
+                    image.onload =
+                        function () {
 
-            if (size === "story") {
-
-
-                poster.style.width =
-                    "540px";
-
-
-                poster.style.height =
-                    "960px";
+                            container.style.display =
+                                "block";
 
 
-                document.getElementById(
-                    "sizeInfo"
-                ).textContent =
-                    "Current size: 1080 × 1920";
+                            updatePoster();
 
-            }
+                        };
 
 
+                    image.src =
+                        e.target.result;
 
-            if (size === "long") {
-
-
-                poster.style.width =
-                    "540px";
+                };
 
 
-                poster.style.height =
-                    "800px";
-
-
-                document.getElementById(
-                    "sizeInfo"
-                ).textContent =
-                    "Current size: 1080 × 1600";
-
-            }
+            reader.readAsDataURL(file);
 
         }
     );
+
+
+
+/* =====================================================
+   FIXED WATERMARK LOGO
+===================================================== */
+
+function loadFixedWatermark() {
+
+    const logo =
+        document.getElementById(
+            "watermarkImagePreview"
+        );
+
+
+    if (!logo) {
+        return;
+    }
+
+
+    /*
+       Fixed logo.
+
+       User cannot select/change it.
+    */
+
+    logo.src =
+        FIXED_LOGO_PATH;
+
+
+    logo.onload =
+        function () {
+
+            updatePoster();
+
+        };
+
+}
+
+
+loadFixedWatermark();
 
 
 
@@ -683,10 +893,9 @@ document
 
 document
     .querySelectorAll(
-        "input:not([type='file']), textarea, select"
+        "input:not([type='file']), textarea"
     )
     .forEach(element => {
-
 
         element.addEventListener(
             "input",
@@ -704,71 +913,52 @@ document
 
 
 /* =====================================================
-   WATERMARK UPLOAD
-===================================================== */
-
-document
-    .getElementById(
-        "watermarkImageInput"
-    )
-    .addEventListener(
-        "change",
-        function (event) {
-
-
-            const file =
-                event.target.files[0];
-
-
-            if (!file) {
-
-                return;
-
-            }
-
-
-            const reader =
-                new FileReader();
-
-
-            reader.onload =
-                function (e) {
-
-
-                    document.getElementById(
-                        "watermarkImagePreview"
-                    ).src =
-                        e.target.result;
-
-
-                };
-
-
-            reader.readAsDataURL(file);
-
-        }
-    );
-
-
-
-/* =====================================================
    DOWNLOAD POSTER
 ===================================================== */
 
 async function downloadPoster() {
 
-
     const poster =
         document.getElementById("poster");
 
 
-    try {
+    /*
+       Update first.
+    */
 
+    updatePoster();
+
+
+    /*
+       Give browser time to render
+       the latest content.
+    */
+
+    await new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                150
+            )
+    );
+
+
+    try {
 
         const canvas =
             await html2canvas(
                 poster,
                 {
+
+                    /*
+                       2x resolution.
+
+                       Example:
+                       Poster 1080 x 1350
+                       Download becomes
+                       approximately 1080 x 1350
+                       depending on preview scale.
+                    */
 
                     scale: 2,
 
@@ -776,7 +966,9 @@ async function downloadPoster() {
 
                     allowTaint: true,
 
-                    backgroundColor: "#ffffff"
+                    backgroundColor: "#ffffff",
+
+                    imageTimeout: 15000
 
                 }
             );
@@ -805,8 +997,10 @@ async function downloadPoster() {
 
     } catch (error) {
 
-
-        console.error(error);
+        console.error(
+            "Poster download error:",
+            error
+        );
 
 
         alert(
@@ -820,10 +1014,27 @@ async function downloadPoster() {
 
 
 /* =====================================================
+   RESET
+===================================================== */
+
+function resetMaker() {
+
+    /*
+       Reload page.
+
+       Fixed logo remains fixed.
+    */
+
+    location.reload();
+
+}
+
+
+
+/* =====================================================
    INITIAL LOAD
 ===================================================== */
 
 showFields();
 
 updatePoster();
-
