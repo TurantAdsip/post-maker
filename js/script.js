@@ -454,7 +454,7 @@ function updatePoster() {
             <div class="quiz-answer">
 
                 <strong>
-                    ✅ Correct Answer:
+                    
                 </strong>
 
                 ${escapeHTML(
@@ -467,7 +467,7 @@ function updatePoster() {
             <div class="quiz-explanation">
 
                 <strong>
-                    💡 Explanation:
+                   
                 </strong>
 
                 <p>
@@ -561,7 +561,7 @@ function updatePoster() {
             <div class="gk-box">
 
                 <strong>
-                    📌 IMPORTANT INFORMATION
+                    
                 </strong>
 
 
