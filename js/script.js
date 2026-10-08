@@ -534,7 +534,7 @@ function updatePoster() {
             <div class="holiday-box">
 
                 <strong>
-                    📅 HOLIDAY DATE
+                    📅 DATE
                 </strong>
 
 
