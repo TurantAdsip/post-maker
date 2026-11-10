@@ -454,7 +454,7 @@ function updatePoster() {
             <div class="quiz-answer">
 
                 <strong>
-                    
+                    अपना जवाब Comment करें!
                 </strong>
 
                 ${escapeHTML(
